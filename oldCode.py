@@ -44,8 +44,27 @@ def ask_riddle():
 
 @app.route('/', methods=["GET", "POST"])
 def index():
-   
-   
-   
-   
+    # main page 
+    #handle post request
+    if request.method == "POST":
+        return render_template("index.html")
+    
+    
+# need to store the names here 
+player_list = []
+def create_player_list(username):
+    player_list.append(username)
+    print(player_list)
+
+@app.route('/game')
+def user():
+    username_list = []
+    if request.method == "POST":
+        create_player_list(request.form['username'])
+    return render_template("game.html", username_list=username_list)
+    
+
+
+#create_player_list('kim')
+#print(player_list)
 app.run(host=os.getenv('IP'), port=int(os.getenv('PORT')), debug=True)
