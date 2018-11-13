@@ -1,36 +1,44 @@
+import os
+from flask import Flask, redirect, render_template, request
 
+app = Flask(__name__)
 
+user_answers = []
+riddles_dict = []
+riddles = []
+answers = []
 
-def keeping_name():
-    names = []
-    for i in range(0, 5):
-        guest_name = str(input('we will keep yot name in a list: '))
-        names.append(guest_name)
-        print(names)
-        i += 1
+# Accessing the riddles to pick questions and answers
+
+with open('data/riddles.txt', 'r') as file:
+    lines = file.read().splitlines()
+
+for i, text in enumerate(lines):
+    if i % 2 == 0:
+        riddles.append(text)
+    else:
+        answers.append(text)
+        
+        
+def ask_riddle():
+    number_of_riddles = len(riddles)
+    riddles_and_answers = zip(riddles, answers)
+    riddles_list = list(riddles_and_answers)
     
-keeping_name()
-
-def test():
-    S=input('')
-    L=[]
-    while S!=4:
-        L.append(S)
-        if S==4:
-            break
-    print(L)
     
-def keeping_name1():
-    our_list = [] # create empty list
-    for i in range(0, 5):
- 
-        guest_name = int(input('Enter first name: '))
-     
-        our_list.append(guest_name)
-
-    print(our_list)
+    score = 0
     
-#keeping_name1()
+    for riddle, answer in riddles_list:
+        guess_answer = input(riddle+"\n" + '>>')
+        if guess_answer == answer:
+            score += 1
+            print('Right!')
+        else:
+            user_answers.append(guess_answer)
+            print('Wrong! ' + 'the answer is >> ' + answer)
+        print(' you got {0} correct out of {1}'.format(score, number_of_riddles))
+        
+ask_riddle()
 
 
-
+#app.run(host=os.getenv('IP'), port=int(os.getenv('PORT')), debug=True)
