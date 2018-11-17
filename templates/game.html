@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Riddles Game</title>
+        <title>Home page</title>
     </head>
     <body>
-        <h1>Welcome, {{ username }}</h1>
-        <h2>Players</h2>
-        <p>{username_list}</p>
-        
-        <script type="text/javascript">
-            setTimeout(function(){
-                location.reload();
-            }, 5000);
-        </script>
+        <h1>user list</h1>
+        <li>
+          userName: {{session['userName']}}
+        </li>
+        <div>
+          {% for riddle in riddles %}
+            <input type="text" value="Answer" name='userinput' />
+            {% if userinput == answer: %}
+              {% score += 1 %}
+              <p>well done right answer!</p>
+            {% else: %}
+              {% user_answers.append(userinput) %}
+              {{wrong_message}}
+              {{score_points}}
+            {% endif %}
+          {% endfor %}
+        </div>
+        <form method="POST">
+          {{ form.hidden_tag() }}
+          {{ form.answer.label}} {{form.answer}}
+          {{form.submit()}}
+        </form>
+
     </body>
 </html>
