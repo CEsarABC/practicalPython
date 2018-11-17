@@ -4,11 +4,12 @@
         <title>Home page</title>
     </head>
     <body>
+      <!-- index brings the user input for user name  -->
         <form method="POST">
           {{ form.hidden_tag() }}
           {{ form.userName.label}} {{form.userName}}
           {{form.submit()}}
         </form>
-    
+
     </body>
 </html>
