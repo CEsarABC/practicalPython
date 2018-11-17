@@ -12,19 +12,11 @@
         <div>
           {% for riddle in riddles %}
             <input type="text" value="Answer" name='userinput' />
-            {% if userinput == answer: %}
-              {% score += 1 %}
-              <p>well done right answer!</p>
-            {% else: %}
-              {% user_answers.append(userinput) %}
-              {{wrong_message}}
-              {{score_points}}
-            {% endif %}
           {% endfor %}
         </div>
-        <form method="POST">
+        <form method="POST" name="RiddleForm">
           {{ form.hidden_tag() }}
-          {{ form.answer.label}} {{form.answer}}
+          {{ form.guess_answer.label}} {{form.guess_answer}}
           {{form.submit()}}
         </form>
 
