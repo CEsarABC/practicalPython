@@ -31,3 +31,22 @@ for i, text in enumerate(lines):
 number_of_riddles = len(riddles)
 riddles_and_answers = zip(riddles, answers)
 riddles_list = list(riddles_and_answers)
+
+
+
+@app.route('/')
+def visits():
+    if 'visits' in session:
+        session['visits'] = session.get('visits') + 1  # reading and updating session data
+    else:
+        session['visits'] = 0 # setting session data
+    return "Total visits: {}".format(session.get('visits'))
+
+@app.route('/delete-visits/')
+def delete_visits():
+    session.pop('visits', None) # delete visits
+    return 'Visits deleted'
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

@@ -64,7 +64,7 @@ def game_riddle():
     form = RiddleForm()
     if form.validate_on_submit():
         session['guess_answer'] = form.guess_answer.data
-        return
+        return redirect('game')
 
     score = 0
     riddle=''
