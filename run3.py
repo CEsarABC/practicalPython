@@ -51,6 +51,7 @@ def test_index():
     else:
         session['counter'] = 0
         session['riddle']=riddles[0]
+        session['score'] = 0
     #return 'counter is: {}, the riddle is: {}'.format(session.get('counter'), session.get('riddle'))
     session['riddle']=riddles[session.get('counter')]
 
@@ -59,8 +60,9 @@ def test_index():
         for riddle, answer in riddles_list:
             session['answer'] = form.answer.data
 
-            if session['answer']==answer and 'score' in session:
+            if session['answer']==answer:
                 session['score'] = session.get('score') + 1
+
         else:
             session['wronganswer']= 'This is the wrong answer'
 
