@@ -43,20 +43,30 @@ class RiddleForm(FlaskForm):
 
 @app.route('/show', methods=['GET','POST'])
 def test_index():
+    form = RiddleForm()
+
     if 'counter' in session:
         session['counter'] = session.get('counter') + 1
-        session['riddle']=riddles[session.get('counter')]
+        session['answer'] = form.answer.data
     else:
         session['counter'] = 0
         session['riddle']=riddles[0]
     #return 'counter is: {}, the riddle is: {}'.format(session.get('counter'), session.get('riddle'))
-
-
-    form = RiddleForm()
+    session['riddle']=riddles[session.get('counter')]
 
     if form.validate_on_submit():
 
-        return redirect('show')
+        for riddle, answer in riddles_list:
+            session['answer'] = form.answer.data
+
+            if session['answer']==answer and 'score' in session:
+                session['score'] = session.get('score') + 1
+        else:
+            session['wronganswer']= 'This is the wrong answer'
+
+
+
+        # return render_template('test.html', form = form)
     return render_template('test.html', form = form)
 
 if __name__ == '__main__':
