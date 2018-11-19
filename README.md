@@ -14,4 +14,8 @@
 
  now working with Flask Sessions I can keep the information.
 
- the challenge is trying to render this python app in the html using flask, in the game.html I'm, trying to bring the loop and render the riddles in the page 
+ the challenge is trying to render this python app in the html using flask, in the game.html I'm, trying to bring the loop and render the riddles in the page.
+
+ Using flask sessions managed to be useful as I can display now the riddle and the counter but the challenge is to bring a new riddle with user validation
+
+ new riddles showing after user validation, storing the last answer and trying to display score, score not storing points, probably to the code order

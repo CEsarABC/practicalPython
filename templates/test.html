@@ -5,8 +5,9 @@
     <title></title>
   </head>
   <body>
+    <h1 style="color: grey">{{session['userName']}}</h1>
     <h1>
-      'this is the riddle: {{session['riddle']}}, Counter {{session['counter']}}'.
+      This is the riddle: {{session['riddle']}}<br>index Counter {{session['counter']}}
     </h1>
     <form method="POST" name="InfoForm" action="">
           {{ form.hidden_tag() }}
