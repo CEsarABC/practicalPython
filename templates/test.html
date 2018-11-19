@@ -8,13 +8,13 @@
     <h1>
       'this is the riddle: {{session['riddle']}}, Counter {{session['counter']}}'.
     </h1>
-    <form method="POST" name="InfoForm">
+    <form method="POST" name="InfoForm" action="">
           {{ form.hidden_tag() }}
           {{ form.answer.label}} {{form.answer}}
           {{form.submit()}}
     </form>
     <h3>this is your last answer: {{session['answer']}}</h3>
-    <h4>Score :{{session['score']}}</h4>
+    <h4>Score:  {{session['score']}}</h4>
     <p>
       {{session[wronganswer]}}
     </p>

@@ -35,10 +35,20 @@ number_of_riddles = len(riddles)
 riddles_and_answers = zip(riddles, answers)
 riddles_list = list(riddles_and_answers)
 
+class InfoForm(FlaskForm):
+    userName = StringField('Please insert your Nickname: ', validators=[DataRequired()])
+    submit = SubmitField('Ok')
+
 class RiddleForm(FlaskForm):
     answer = StringField('Please insert your Answer: ', validators=[DataRequired()])
     submit = SubmitField('Ok')
 
+@app.route('/', methods=['GET','POST'])
+def test_root():
+    form = InfoForm()
+    if form.validate_on_submit():
+        return redirect(url_for('test_index'))
+    return render_template('index.html',form=form)
 
 
 @app.route('/show', methods=['GET','POST'])
@@ -47,28 +57,23 @@ def test_index():
 
     if 'counter' in session:
         session['counter'] = session.get('counter') + 1
-        session['answer'] = form.answer.data
     else:
         session['counter'] = 0
         session['riddle']=riddles[0]
         session['score'] = 0
-    #return 'counter is: {}, the riddle is: {}'.format(session.get('counter'), session.get('riddle'))
+#return 'counter is: {}, the riddle is: {}'.format(session.get('counter'), session.get('riddle'))
     session['riddle']=riddles[session.get('counter')]
+
 
     if form.validate_on_submit():
 
         for riddle, answer in riddles_list:
             session['answer'] = form.answer.data
 
-            if session['answer']==answer:
+            if session['answer'] == answer:
                 session['score'] = session.get('score') + 1
+        return redirect(url_for('test_index'))
 
-        else:
-            session['wronganswer']= 'This is the wrong answer'
-
-
-
-        # return render_template('test.html', form = form)
     return render_template('test.html', form = form)
 
 if __name__ == '__main__':
