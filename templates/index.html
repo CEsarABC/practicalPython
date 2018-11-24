@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Home page</title>
-    </head>
-    <body>
-      <!-- index brings the user input for user name  -->
-        <form method="POST"name="InfoForm">
-          {{ form.hidden_tag() }}
-          {{ form.userName.label}} {{form.userName}}
-          {{form.submit()}}
-        </form>
+{% extends "base.html" %}
 
-    </body>
-</html>
+
+{% block content %}
+
+<div class="jumbotron">
+  <form method='POST'>
+    <label for="userForm">User\form</label>
+    <input type="text" name='UsernameInput' />
+    <button>SendForm</button>
+  </form>
+</div>
+
+{% endblock %}
