@@ -6,10 +6,10 @@
   <h1>This is the riddle: {{session['riddle']}}<br>index Counter {{session['counter']}}</h1>
 </div>
 <div class="jumbotron">
-  <form method="POST">
-        <label for='answer'>Answer</label>
-        <input type="text" name='answerInput' />
-        <button>SendForm</button>
+  <form method="POST" name="InfoForm" action="">
+        {{ form.hidden_tag() }}
+        {{ form.answer.label}} {{form.answer}}
+        {{form.submit()}}
   </form>
   <h4>this is your last answer: {{session['userInput']}}</h4>
   <h4>Score:  {{session['score']}}</h4>

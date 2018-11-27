@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="jumbotron shadowr">
+  <form method="POST"name="InfoForm">
+    {{ form.hidden_tag() }}
+    {{ form.userName.label}} {{form.userName}}
+    {{form.submit()}}
+  </form>
+</div>
+
+{% endblock %}
