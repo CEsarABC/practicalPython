@@ -1,0 +1,15 @@
+/* box-shadow: none|h-offset v-offset blur spread color |inset|initial|inherit; */
+
+.shadowred{
+  box-shadow: 0px 10px 10px darkgrey;
+}
+body{
+  background-color: #f66666;
+  color: orange;
+}
+.jumbotron h4{
+  color: orange;
+}
+h1{
+  color: orange;
+}
