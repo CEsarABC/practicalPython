@@ -1,21 +1,10 @@
 from flask import Flask,render_template,session,redirect,url_for,request
-import string
+import myDictionary
+from myDictionary import riddlesExt
 
-
-from wtforms.validators import DataRequired
-
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 app.config['SECRET_KEY'] = 'mykey'
 
-################### not in use
-user_list = []
-
-def new_user():
-    print('this function needs to take a name and putting in a list')
-    for i in range(0,2):
-        user = input('this is my name: ')
-        user_list.append(user)
-    print(user_list)
 
 ##################### storing data in lists
 user_answers = []
@@ -25,7 +14,7 @@ answers = []
 
 ########### organising the info in separate lists
 
-with open('data/riddles2.txt', 'r') as file:
+with open('data/riddles1.txt', 'r') as file:
     lines = file.read().splitlines()
 
 for i, text in enumerate(lines):
@@ -40,20 +29,47 @@ number_of_riddles = len(riddles)
 riddles_and_answers = zip(riddles, answers)
 riddles_list = list(riddles_and_answers)
 #print(riddles_list)
+total_users = []
+
+def user_Information():
+    global total_users
+    if 'user' in session:
+        new_dict = session['userName'] + str(session['count'])
+        new_dict = {
+        "name": "",
+        "score": ""
+        }
+        new_dict['name'] = session['userName']
+        new_dict['score'] = session['score']
+        session['count'] = 0
+        total_users.append(new_dict)
+        session['users'] = total_users
+        print(new_dict)
+
+
+
 
 
 ############ first definition, first validation, redirecting to next game, user name
 
 @app.route('/', methods=['GET','POST'])
 def test_root():
+
     if request.method == 'POST':
         session['userName'] = request.form['UsernameInput']
+        user_Information()
         return redirect(url_for('run_index'))
+
+    else:
+        session['count'] = 0
+        session['user'] = ''
+        session['score'] = 0
     return render_template('index.html')
+
 
 ############ second definition accessing riddles and taking inputs
 
-@app.route('/show', methods=['GET','POST'])
+@app.route('/game', methods=['GET','POST'])
 def run_index():
     if request.method == "POST":
         session['userInput'] = request.form['answerInput']
@@ -63,11 +79,24 @@ def run_index():
                 session['score'] = session.get('score') + 1
 
         return redirect(url_for('run_index'))
+
+    # elif request.method == "POST" and request.form['answerInput'] == None:
+    #
+    #     return redirect(url_for('run_index'))
+
     else:
         if 'counter' in session:
             session['counter'] = session.get('counter') + 1
-            if session.get('counter') == 4 :
-                return render_template('results.html')
+            if session.get('counter') == 3 :
+                return redirect(url_for('results'))
+            elif session.get('counter') == 7 :
+                return redirect(url_for('results'))
+            elif session.get('counter') == 11 :
+                return redirect(url_for('results'))
+            elif session.get('counter') == 15 :
+                return redirect(url_for('results'))
+            # else:
+            #     return redirect(url_for('run_index'))
 
             #need to add if session[counter]=14 end of the quiz
             #redirect results
@@ -81,12 +110,19 @@ def run_index():
 
         #return redirect(url_for('run_index'))
 
-    return render_template('test.html')
+    return render_template('game.html')
 
 @app.route('/results')
 def results():
+    if request.method == 'POST':
+         # del session['counter'] #### delete the session here
+         return redirect(url_for('run_index'))
     # need to clear the session for the next player
     return render_template('results.html')
+
+def clear_session():
+    session['score'] = 0
+    return None
 
 if __name__ == '__main__':
     app.run(debug=True)
