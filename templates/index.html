@@ -3,12 +3,17 @@
 
 {% block content %}
 
-<div class="jumbotron">
+<div class="jumbotron" id='indexForm'>
+  <h1>WELCOME TO CESAR'S RIDDLE GAME</h1>
   <form method='POST'>
-    <label for="userForm">User\form</label>
-    <input type="text" name='UsernameInput' />
-    <button>SendForm</button>
+    <p>Please insert rout name to start the game</p>
+    <!-- <label for="userForm"></label> -->
+    <input type="text" name='UsernameInput' maxlength="12" placeholder="required" required/>
+    <div>
+      <button>OK</button>
+    </div>
   </form>
 </div>
+
 
 {% endblock %}

@@ -2,11 +2,12 @@
 
 {% block content %}
 
-<h1 style="color: grey">{{session['userName']}}</h1>
-<div class="jumbotron">
+<div class="jumbotron text-center">
+  <h1>Player: {{session['userName']}}</h1>
   <h1>This is my results page</h1>
   <h3>Score: {{session['score']}}</h3>
   <button class="btn"><a href="{{ url_for('test_root')}}">Start Again</a></button>
 </div>
+
 
 {% endblock %}

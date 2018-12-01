@@ -1,21 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 style="color: grey">{{session['userName']}}</h1>
-<div class="jumbotron">
-  <h1>This is the riddle: {{session['riddle']}}<br>index Counter {{session['counter']}}</h1>
+<div id="userTitle">
+  <h1>Player: {{session['userName']}}</h1>
 </div>
 <div class="jumbotron">
+
+  <h1>This is the riddle: {{session['riddle']}}</h1>
+</div>
+<div class="jumbotron text-center">
   <form method="POST">
         <label for='answer'>Answer</label>
         <input type="text" name='answerInput' />
-        <button>SendForm</button>
+        <button>Send/Pass</button>
+
   </form>
+  <div class="col-md-12" id='answerBlock'>
   <h4>this is your last answer: {{session['userInput']}}</h4>
   <h4>Score:  {{session['score']}}</h4>
-  <p>
-    {{session[wronganswer]}}
-  </p>
+  <p>{{session['users']}}</p>
+  <p>{{session['count']}}</p>
 </div>
 
 
