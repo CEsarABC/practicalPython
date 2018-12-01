@@ -1,7 +1,4 @@
-import os
-from flask import Flask, redirect, render_template, request
 
-app = Flask(__name__)
 
 user_answers = []
 riddles_dict = []
@@ -38,7 +35,14 @@ def ask_riddle():
             print('Wrong! ' + 'the answer is >> ' + answer)
         print(' you got {0} correct out of {1}'.format(score, number_of_riddles))
 
-ask_riddle()
+#ask_riddle()
 
+def my_function(fname):
+    if fname.islower():
+        print ('it worked')
+    else:
+        print(fname.lower() + " Refsnes")
 
-#app.run(host=os.getenv('IP'), port=int(os.getenv('PORT')), debug=True)
+my_function("EMIL")
+my_function("tobias")
+my_function("Linus")
