@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<div class="jumbotron" id='indexForm'>
+<div class="jumbotron indexForm" >
   <h1>WELCOME TO CESAR'S RIDDLE GAME</h1>
   <form method='POST'>
     <p>Please insert rout name to start the game</p>
@@ -13,6 +13,11 @@
       <button>OK</button>
     </div>
   </form>
+
+    {% for i in dictionaries %}
+      <p>{{dictionaries.name}}</p>
+    {% endfor %}
+
 </div>
 
 

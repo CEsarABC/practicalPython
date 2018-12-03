@@ -2,11 +2,19 @@
 
 {% block content %}
 
-<div class="jumbotron text-center">
+<div class="jumbotron indexForm">
   <h1>Player: {{session['userName']}}</h1>
   <h1>This is my results page</h1>
   <h3>Score: {{session['score']}}</h3>
   <button class="btn"><a href="{{ url_for('test_root')}}">Start Again</a></button>
+
+  <p>{{dictionaries}}</p>
+  <p>{{dictionaries[0]['name']}} {{dictionaries[0]['score']}}</p>
+  {% for entry in dictionaries %}
+  <p>
+    {{entry.get('name')}} with score {{entry.get('score')}}
+  </p>
+  {% endfor %}
 </div>
 
 
