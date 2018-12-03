@@ -12,9 +12,10 @@ riddles_dict = []
 riddles = []
 answers = []
 
-########### organising the info in separate lists
+""" organising the info in separate lists"""""
+""" riddles file"""
 
-with open('data/riddles1.txt', 'r') as file:
+with open('data/riddles_space.txt', 'r') as file:
     lines = file.read().splitlines()
 
 for i, text in enumerate(lines):
@@ -31,23 +32,24 @@ riddles_list = list(riddles_and_answers)
 #print(riddles_list)
 total_users = []
 
-def user_Information():
-    global total_users
-    if 'user' in session:
-        new_dict = session['userName'] + str(session['count'])
-        new_dict = {
-        "name": "",
-        "score": ""
-        }
-        new_dict['name'] = session['userName']
-        # new_dict['score'] = session.get('score')
-        session['count'] = 0
-        total_users.append(new_dict)
-        session['users'] = total_users
-        print(new_dict)
+# def user_Information():
+#     global total_users
+#     if 'user' in session:
+#         new_dict = session['userName'] + str(session['count'])
+#         new_dict = {
+#         "name": "",
+#         "score": ""
+#         }
+#         new_dict['name'] = session['userName']
+#         # new_dict['score'] = session.get('score')
+#         session['count'] = 0
+#         total_users.append(new_dict)
+#         session['users'] = total_users
+#         # for entry in dictionaries:
+#         #     print(['name'])
 
 
-
+#print(riddles_list[0][1])
 
 
 ############ first definition, first validation, redirecting to next game, user name
@@ -57,59 +59,70 @@ def test_root():
 
     if request.method == 'POST':
         session['userName'] = request.form['UsernameInput']
-        return redirect(url_for('run_index'))
+        return redirect(url_for('run_game'))
 
     else:
         session['count'] = 0
         session['user'] = ''
         session['score'] = 0
+
+    if 'counter' in session and session.get('counter') > 0:
+        session['counter'] = session.get('counter') + 1
     return render_template('index.html')
 
 
 ############ second definition accessing riddles and taking inputs
-
+wrong_answers = []
 @app.route('/game', methods=['GET','POST'])
-def run_index():
+def run_game():
+
     if request.method == "POST":
         session['userInput'] = request.form['answerInput']
         userAnswerData = session['userInput']
         for riddle, answer in riddles_list:
             if session['riddle'] == riddle and session['userInput'].lower() == answer:
                 session['score'] = session.get('score') + 1
-
-        return redirect(url_for('run_index'))
-
-    # elif request.method == "POST" and request.form['answerInput'] == None:
-    #
-    #     return redirect(url_for('run_index'))
-
+            else:
+                if session['riddle'] == riddle and session['userInput'].lower() != answer:
+                    wrong_dict = {}
+                    wrong_dict['riddle'] = session['riddle']
+                    wrong_dict['wrongInput'] = session['userInput']
+                    wrong_dict['realAnswer'] = riddles_list[session.get('counter')][1]
+                    wrong_answers.append(wrong_dict)
+        session['counter'] = session.get('counter') + 1
+        print('this is riddle list ' + riddles_list[session.get('counter')][1])
+        return redirect(url_for('run_game'))
     else:
-        if 'counter' in session:
-            session['counter'] = session.get('counter') + 1
-            if session.get('counter') == 3 :
-                return redirect(url_for('results'))
-            elif session.get('counter') == 7 :
-                return redirect(url_for('results'))
-            elif session.get('counter') == 11 :
-                return redirect(url_for('results'))
-            elif session.get('counter') == 15 :
-                return redirect(url_for('results'))
-            # else:
-            #     return redirect(url_for('run_index'))
-
-            #need to add if session[counter]=14 end of the quiz
-            #redirect results
-        else:
+        if 'counter' not in session:
             session['counter'] = 0
-            #session['riddle']=riddles[0]
+                #session['riddle']=riddles[0]
             session['score'] = 0
-        #test print(session['counter'])
-    # test return 'counter is: {}, the riddle is: {}'.format(session.get('counter'), session.get('riddle'))
-        session['riddle']=riddles[session.get('counter')]
 
+
+    if 'counter' in session:
+        #session['counter'] = session.get('counter') + 1
+        if session.get('counter') == 3 :
+            return redirect(url_for('results'))
+        elif session.get('counter') == 7 :
+            return redirect(url_for('results'))
+        elif session.get('counter') == 11 :
+            return redirect(url_for('results'))
+        elif session.get('counter') == 15 :
+            session['counter'] = 0
+            return redirect(url_for('results')) #make a new start
+        elif session.get('counter') == 19 :
+            #session['counter'] = 0
+            return redirect(url_for('results'))
+        # else:
+        #     return redirect(url_for('run_index'))
+
+        #need to add if session[counter]=14 end of the quiz
+        #redirect results
+
+    session['riddle']=riddles[session.get('counter')]
         #return redirect(url_for('run_index'))
 
-    return render_template('game.html', dictionaries = dictionaries)
+    return render_template('game.html', dictionaries = dictionaries, wrong_answers=wrong_answers)
 
 @app.route('/results')
 def results():
@@ -119,10 +132,13 @@ def results():
         'score': session['score']
         }
         dictionaries.append(newDict)
+###### test for dictionary
+    for entry in dictionaries:
+        print(entry.get('name'))
     if request.method == 'POST':
-         # del session['counter'] #### delete the session here
-         return redirect(url_for('run_index'))
+         return redirect(url_for('run_game'))
     # need to clear the session for the next player
+    print(session['counter'])
     return render_template('results.html', dictionaries = dictionaries)
 
 def clear_session():
