@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h1>Testing Flask</h1>
 <div id="userTitle">
   <h1>Player: {{session['userName']}}</h1>
 </div>
 <div class="jumbotron">
 
-  <h1>This is the riddle: {{session['riddle']}}</h1>
+  <h1>Riddle: {{session['riddle']}}</h1>
 </div>
 <div class="jumbotron text-center">
   <form method="POST">
@@ -18,11 +19,12 @@
   <div class="col-md-12" id='answerBlock'>
   <h4>this is your last answer: {{session['userInput']}}</h4>
   <h4>Score:  {{session['score']}}</h4>
-  <p>{{session['users']}}</p>
-  <p>{{session['count']}}</p>
-  <p>{{dictionaries}}</p>
+
+  <p> older players{{dictionaries}}</p>
   <p>{{new_dict}}</p>
 </div>
+<p>{{session['counter']}}</p>
+<p>{{wrong_answers}}</p>
 
 
 {% endblock %}

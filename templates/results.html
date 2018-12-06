@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<h1>Testing Flask Results</h1>
 <div class="jumbotron indexForm">
   <h1>Player: {{session['userName']}}</h1>
   <h1>This is my results page</h1>
   <h3>Score: {{session['score']}}</h3>
-  <button class="btn"><a href="{{ url_for('test_root')}}">Start Again</a></button>
+  <button class="btn"><a href="{{ url_for('root')}}">Start Again</a></button>
 
   <p>{{dictionaries}}</p>
   <p>{{dictionaries[0]['name']}} {{dictionaries[0]['score']}}</p>
@@ -14,6 +14,14 @@
   <p>
     {{entry.get('name')}} with score {{entry.get('score')}}
   </p>
+  {% endfor %}
+  <p>{{wrong_answers}}</p>
+</div>
+<div class="jumbotron indexForm">
+  {% for entry in wrong_answers %}
+    <p>
+      {{entry.get('riddle')}} : <span>Answer: </span>{{entry.get('realAnswer')}}
+    </p>
   {% endfor %}
 </div>
 
