@@ -1,7 +1,6 @@
-# import sys
-# sys.path.insert(0, '..')
-from unittest import TestCase
 from run4 import app
+from unittest import TestCase
+
 
 class TestRun(TestCase):
     def test_root(self):
@@ -21,7 +20,14 @@ class TestGame(TestCase):
             responce = c.get('/game', follow_redirects=True)
             self.assertEqual(response.status_code, 200)
 
-class TestGame(TestCase):
+''' TestResults case fails response code 500 Internal Server Error,
+instead of 200 OK'''
+''' Traceback (most recent call last):
+  File "C:\Users\zeroa\PycharmProjects\practicalPython\test_run.py", line 28, in test_results
+    self.assertEqual(response.status_code, 200)
+AssertionError: 500 != 200 '''
+
+class TestResults(TestCase):
     def test_results(self):
         with app.test_client() as c:
             response = c.get('/results')
@@ -29,7 +35,3 @@ class TestGame(TestCase):
 
             responce = c.get('/results', follow_redirects=True)
             self.assertEqual(response.status_code, 200)
-
-
-if __name__ == '__main__':
-    unittest.main()
