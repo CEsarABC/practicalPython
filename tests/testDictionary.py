@@ -15,5 +15,3 @@ def new_user():
     print(user_list)
 
 new_user()
-
-print(riddles[2])
