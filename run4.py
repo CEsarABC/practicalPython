@@ -1,5 +1,5 @@
 from flask import Flask,render_template,session,redirect,url_for,request
-import myDictionary
+#import myDictionary
 from myDictionary import riddlesExt
 
 app = Flask(__name__, static_url_path='/static')
@@ -32,32 +32,25 @@ riddles_list = list(riddles_and_answers)
 #print(riddles_list)
 total_users = []
 
-# def user_Information():
-#     global total_users
-#     if 'user' in session:
-#         new_dict = session['userName'] + str(session['count'])
-#         new_dict = {
-#         "name": "",
-#         "score": ""
-#         }
-#         new_dict['name'] = session['userName']
-#         # new_dict['score'] = session.get('score')
-#         session['count'] = 0
-#         total_users.append(new_dict)
-#         session['users'] = total_users
-#         # for entry in dictionaries:
-#         #     print(['name'])
-
-
 #print(riddles_list[0][1])
 
 
-############ first definition, first validation, redirecting to next game, user name
+"""first definition, first validation, redirecting to next game, user name"""
+
+''' dictionaries acts as a global list to store
+the user name and final score for that game - results()'''
+
 dictionaries = []
+'''wrong_answers stores the riddle and wrong answer,
+if wrong answer is presented - run_game()'''
+
 wrong_answers = []
 
+'''the first function to take the player name,
+show the rules and redirect to the game'''
+
 @app.route('/', methods=['GET','POST'])
-def test_root():
+def root():
     wrong_answers.clear()
     if request.method == 'POST':
         session['userName'] = request.form['UsernameInput']
@@ -142,17 +135,14 @@ def results():
     for entry in dictionaries:
         print(entry.get('name'))
     if request.method == 'POST':
-        wrong_answers.clear()
-        '''not working'''
-        # erase wrong ansewres
-        return redirect(url_for('run_game'))
+        return redirect(url_for('root'))
     # need to clear the session for the next player
     print(session['counter'])
     return render_template('results.html', dictionaries = dictionaries, wrong_answers=wrong_answers)
 
-def clear_session():
-    session['score'] = 0
-    return None
+@app.route('/rules')
+def rules():
+    return abs
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,5 +1,5 @@
 from flask import Flask,render_template,session,redirect,url_for,request
-import myDictionary
+#import myDictionary
 from myDictionary import riddlesExt
 
 app = Flask(__name__, static_url_path='/static')
@@ -54,9 +54,11 @@ total_users = []
 
 ############ first definition, first validation, redirecting to next game, user name
 dictionaries = []
-@app.route('/', methods=['GET','POST'])
-def test_root():
+wrong_answers = []
 
+@app.route('/', methods=['GET','POST'])
+def root():
+    wrong_answers.clear()
     if request.method == 'POST':
         session['userName'] = request.form['UsernameInput']
         return redirect(url_for('run_game'))
@@ -68,11 +70,12 @@ def test_root():
 
     if 'counter' in session and session.get('counter') > 0:
         session['counter'] = session.get('counter') + 1
+
     return render_template('index.html')
 
 
 ############ second definition accessing riddles and taking inputs
-wrong_answers = []
+
 @app.route('/game', methods=['GET','POST'])
 def run_game():
 
@@ -83,12 +86,15 @@ def run_game():
             if session['riddle'] == riddle and session['userInput'].lower() == answer:
                 session['score'] = session.get('score') + 1
             else:
+
                 if session['riddle'] == riddle and session['userInput'].lower() != answer:
-                    wrong_dict = {}
-                    wrong_dict['riddle'] = session['riddle']
-                    wrong_dict['wrongInput'] = session['userInput']
-                    wrong_dict['realAnswer'] = riddles_list[session.get('counter')][1]
+                    wrong_dict = {
+                    'riddle': session['riddle'],
+                    'wrongInput': session['userInput'],
+                    'realAnswer': riddles_list[session.get('counter')][1]
+                    }
                     wrong_answers.append(wrong_dict)
+
         session['counter'] = session.get('counter') + 1
         print('this is riddle list ' + riddles_list[session.get('counter')][1])
         return redirect(url_for('run_game'))
@@ -136,10 +142,10 @@ def results():
     for entry in dictionaries:
         print(entry.get('name'))
     if request.method == 'POST':
-         return redirect(url_for('run_game'))
+        return redirect(url_for('root'))
     # need to clear the session for the next player
     print(session['counter'])
-    return render_template('results.html', dictionaries = dictionaries)
+    return render_template('results.html', dictionaries = dictionaries, wrong_answers=wrong_answers)
 
 def clear_session():
     session['score'] = 0

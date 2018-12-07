@@ -1,6 +1,37 @@
 # Coding in ATOM 1.32.2
 
- This is the mini project for practical python
+## Important Flask testing
+
+https://github.com/CEsarABC/practicalPython
+
+* basic project tree
+  - practicalPython
+      - data
+      - static
+      - templates
+      - tests
+  - run4.py
+  - test_run1.py
+
+
+* In tutorials we can not see any unittest applied to flask.
+* the mini project guide is clear on the use of TDD but finding it hard.
+* any other suggestions for testing??
+* testing cases work in some cases see test_run1.py
+  running
+  >>python -m unittest test_run1.py
+
+  5 tests ran FAILED (failures=1, errors=1).
+  last test case does not find the page results.html. why?
+  last test followed same principle but failed
+  - [x] taste case for root
+  - [x] taste case for game
+  - [ ] taste case for results 'not working'
+
+## how to do other tests?
+_______________________________________________________________
+
+ ## This is the mini project for practical python
 
  my idea is to create a web app in which you ask the user for a user name and the user gets directed to the game page where he starts with a question, after the user input his answer this answer is stored just if is wrong and displayed back to the user giving a second chance for the user to answer, if the question is not answered the second time, it continues to the next riddle, keeping score and answers for the session, there are 5 questions in total for game, at the end the user gets redirected to the results page where all the riddles and answers are displayed
 
