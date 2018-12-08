@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Testing Flask Results</h1>
+<h1>Testing Flask</h1>
 <div class="jumbotron indexForm">
   <h1>Player: {{session['userName']}}</h1>
   <h1>This is my results page</h1>
   <h3>Score: {{session['score']}}</h3>
-  <button class="btn"><a href="{{ url_for('root')}}">Start Again</a></button>
+  <form method="POST">
+    <button class="btn">Start Again</button>
+  </form>
+
 
   <p>{{dictionaries}}</p>
   <p>{{dictionaries[0]['name']}} {{dictionaries[0]['score']}}</p>

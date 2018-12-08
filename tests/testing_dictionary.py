@@ -9,7 +9,7 @@ user_list = {
 }
 
 def new_user():
-    print('this function needs to take a name and putting in a list')
+    print('this function needs to insert the name in a list')
     user = input('this is my name: ')
     user_list["name"] = user
     print(user_list)
