@@ -1,6 +1,5 @@
 from flask import Flask,render_template,session,redirect,url_for,request
-#import myDictionary
-from myDictionary import riddlesExt
+
 
 app = Flask(__name__, static_url_path='/static')
 app.config['SECRET_KEY'] = 'mykey'
@@ -60,6 +59,7 @@ def root():
         session['count'] = 0
         session['user'] = ''
         session['score'] = 0
+        session['userInput'] = ''
 
     if 'counter' in session and session.get('counter') > 0:
         session['counter'] = session.get('counter') + 1
@@ -123,26 +123,29 @@ def run_game():
 
     return render_template('game.html', dictionaries = dictionaries, wrong_answers=wrong_answers)
 
-@app.route('/results')
+@app.route('/results', methods=['GET','POST'])
 def results():
-    if 'count' in session:
-        newDict ={
-        'name': session['userName'],
-        'score': session['score']
-        }
-        dictionaries.append(newDict)
-###### test for dictionary
-    for entry in dictionaries:
-        print(entry.get('name'))
+
+
+    '''test for dictionary'''
+    # for entry in dictionaries:
+    #     print(entry.get('name'))
+
     if request.method == 'POST':
+        if 'userName' in session:
+            newDict ={
+            'name': session['userName'],
+            'score': session['score']
+            }
+            dictionaries.append(newDict)
         return redirect(url_for('root'))
-    # need to clear the session for the next player
+
     print(session['counter'])
     return render_template('results.html', dictionaries = dictionaries, wrong_answers=wrong_answers)
 
 @app.route('/rules')
 def rules():
-    return abs
+    return render_template('rules.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
