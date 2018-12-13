@@ -8,29 +8,32 @@
 </div>
 
 <div class="row">
-  <div class="col-md-8 boxBorder">
+  <div class="col-md-12 boxBorder">
     <h1>Riddle: {{session['riddle']}}</h1>
   </div>
-
-  <div class="col-md-4 boxBorder">
-    <form method="POST">
-          <!-- <label for='answer'>Answer</label> -->
-          <input type="text" name='answerInput' placeholder="Your Answer" />
-          <button>Send/Pass</button>
-    </form>
-    <h5>this is your last answer:<span class="answer"> {{session['userInput']}}</span></h4>
-    <h5>Score:  {{session['score']}}</h4>
-  </div/>
-
 </div>
 
 <div class="row">
-  <div class="col-md-12 boxBorder">
+  <div class="col-md-8 boxBorder">
+    <form method="POST">
+          <!-- <label for='answer'>Answer</label> -->
+          <input type="text" name='answerInput' placeholder="Your Answer" />
+          <button type="submit" class="btn btn-primary">Send/Pass</button>
+
+    </form>
+    <br />
+    <h5>Last answer:<span class="answer"> {{session['userInput']}}</span></h4>
+    <h5>Score:  {{session['score']}}</h4>
+  </div/>
+
+  <div class="col-md-4 boxBorder">
     <h3>Leaderboard</h3>
     {% for entry in dictionaries %}
-    <p>
-      <span class="answer">{{entry.get('name')}}</span> score <span class="answer">{{entry.get('score')}}</span>
-    </p>
+    <ul>
+      <li>
+        <span class="answer">{{entry.get('name')}}</span> score <span class="answer">{{entry.get('score')}}</span>
+      </li>
+    </ul>
     {% endfor %}
     <!-- <p> older players{{dictionaries}}</p> -->
     <!-- <p>{{new_dict}}</p> -->

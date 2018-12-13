@@ -3,28 +3,31 @@
 {% block content %}
 <div class="container" style="margin-top: 15%">
   <div class="row">
-    <div class="col-md-12 boxBorder">
+    <div class="col-md-8 boxBorder">
       <h1>Player: {{session['userName']}}</h1>
       <h1>This is my results page</h1>
       <h3>Score: {{session['score']}}</h3>
       <form method="POST">
-        <button class="btn">Start Again</button>
+        <button type="submit" class="btn btn-primary">Start Again</button>
       </form>
+    </div>
 
-
-      <!-- <p>{{dictionaries}}</p> -->
-
-      <!-- {% for entry in dictionaries %}
-      <p>
-        {{entry.get('name')}} with score {{entry.get('score')}}
-      </p>
-      {% endfor %} -->
-      <!-- <p>{{wrong_answers}}</p> -->
+    <div class="col-md-4 boxBorder">
+      <h3>Leaderboard</h3>
+      {% for entry in dictionaries %}
+      <ul>
+        <li>
+          <span class="answer">{{entry.get('name')}}</span> score <span class="answer">{{entry.get('score')}}</span>
+        </li>
+      </ul>
+      {% endfor %}
+      <!-- <p> older players{{dictionaries}}</p> -->
+      <!-- <p>{{new_dict}}</p> -->
     </div>
   </div>
   <div class="row">
     <div class="col-md-12 boxBorder">
-      <h5>Answer for your riddles</h5>
+      <h5>Answers for your riddles</h5>
       {% for entry in wrong_answers %}
         <ul>
           <li>
