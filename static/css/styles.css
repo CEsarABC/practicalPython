@@ -1,25 +1,29 @@
 /* box-shadow: none|h-offset v-offset blur spread color |inset|initial|inherit; */
 
-.shadowred{
-  box-shadow: 0px 10px 10px blue;
+.verticalAlign{
+  display: flex;
+  align-items: center;
 }
+
+.boxBorder{
+  border: solid 1px orange;
+  padding: 2em;
+}
+
 body{
   background-color: #141414;
-  background: #1e5799; /* Old browsers */
-background: -moz-linear-gradient(top, #1e5799 0%, #448dc9 48%, #207cca 54%, #207cca 54%, #2989d8 68%, #7db9e8 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top, #1e5799 0%,#448dc9 48%,#207cca 54%,#207cca 54%,#2989d8 68%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom, #1e5799 0%,#448dc9 48%,#207cca 54%,#207cca 54%,#2989d8 68%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
-
   /* background-image: linear-gradient(-90deg,#F9DEB9, #F2C2B3); */
   color: orange;
 }
-.jumbotron h1, h4{
-  color: orange;
+.topMargin{
+  margin-top: 20%;
 }
+
 h1{
-  font-family: 'Raleway', sans-serif;
+  /*font-family: 'Raleway', sans-serif;*/
+  font-family: 'Fredericka the Great', cursive;
   color: white;
+  font-size: 2.5em;
 }
 .indexForm{
   text-align: center;
@@ -31,10 +35,7 @@ h1{
   background-color: #141414;
   border: solid 1px orange;
 }
-#answerBlock{
-  text-align: center;
-}
-#userTitle h1{
+.userTitle h1{
   text-align: right;
   margin-top: 5% ;
   font-family: 'Lobster', cursive;
@@ -42,5 +43,13 @@ h1{
   color: orange;
 }
 span{
+  color: rgb(35, 140, 207);
+}
+#effects{
+  color: white;
+  text-shadow: 0 0 15px #FFF, 0 0 30px #49FF18, 0 0 75px #49ff18, 2px 2px 2px rgba(28,110,164,0);
+}
+.answer{
+  text-transform: capitalize;
   color: rgb(35, 140, 207);
 }

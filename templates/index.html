@@ -2,18 +2,27 @@
 
 
 {% block content %}
+<div class="row" style="margin-top: 25%">
 
-<div class="jumbotron indexForm" >
-  <h1>WELCOME TO CESAR'S RIDDLE GAME</h1>
-  <form method='POST'>
-    <p>Please insert rout name to start the game</p>
-    <!-- <label for="userForm"></label> -->
-    <input type="text" name='UsernameInput' maxlength="12" placeholder="required" required/>
-    <div>
-      <button>OK</button>
+  <div class="col-md-6">
+    <div style="padding:2em">
+      <h1>WELCOME TO CESAR'S RIDDLE GAME</h1>
     </div>
-  </form>
-<p>{{session['counter']}}</p>
+
+
+  </div>
+  <div class="col-md-6 boxBorder">
+    <p>Please insert your name to start the game</p>
+    <!-- <label for="userForm"></label> -->
+    <form method='POST'>
+      <input type="text" name='UsernameInput' maxlength="12" placeholder="required" required/>
+      <div>
+        <button>OK</button>
+      </div>
+    </form>
+  <p>{{session['counter']}}</p>
+  </div>
+
 
 </div>
 

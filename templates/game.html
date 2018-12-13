@@ -1,30 +1,52 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Testing Flask</h1>
-<div id="userTitle">
-  <h1>Player: {{session['userName']}}</h1>
+<div class="col-md-12">
+  <div class="userTitle">
+    <h1>Player: <span class="answer">{{session['userName']}}</span></h1>
+  </div>
 </div>
-<div class="jumbotron">
 
-  <h1>Riddle: {{session['riddle']}}</h1>
+<div class="row">
+  <div class="col-md-8 boxBorder">
+    <h1>Riddle: {{session['riddle']}}</h1>
+  </div>
+
+  <div class="col-md-4 boxBorder">
+    <form method="POST">
+          <!-- <label for='answer'>Answer</label> -->
+          <input type="text" name='answerInput' placeholder="Your Answer" />
+          <button>Send/Pass</button>
+    </form>
+    <h5>this is your last answer:<span class="answer"> {{session['userInput']}}</span></h4>
+    <h5>Score:  {{session['score']}}</h4>
+  </div/>
+
 </div>
-<div class="jumbotron text-center">
-  <form method="POST">
-        <label for='answer'>Answer</label>
-        <input type="text" name='answerInput' />
-        <button>Send/Pass</button>
 
-  </form>
-  <div class="col-md-12" id='answerBlock'>
-  <h4>this is your last answer: {{session['userInput']}}</h4>
-  <h4>Score:  {{session['score']}}</h4>
-
-  <p> older players{{dictionaries}}</p>
-  <p>{{new_dict}}</p>
+<div class="row">
+  <div class="col-md-12 boxBorder">
+    <h3>Leaderboard</h3>
+    {% for entry in dictionaries %}
+    <p>
+      <span class="answer">{{entry.get('name')}}</span> score <span class="answer">{{entry.get('score')}}</span>
+    </p>
+    {% endfor %}
+    <!-- <p> older players{{dictionaries}}</p> -->
+    <!-- <p>{{new_dict}}</p> -->
+  </div>
 </div>
-<p>{{session['counter']}}</p>
-<p>{{wrong_answers}}</p>
+<div class="row">
+  <div class="col-md-12 boxBorder">
+    {% for entry in wrong_answers %}
+      <p>{{entry.get('riddle')}}</p>
+      <p>your answer: <span class="answer">{{entry.get('wrongInput')}}</span></p>
+    {% endfor %}
+  </div>
+</div>
+
+
+
 
 
 {% endblock %}

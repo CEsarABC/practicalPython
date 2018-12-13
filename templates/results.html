@@ -1,32 +1,39 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Testing Flask</h1>
-<div class="jumbotron indexForm">
-  <h1>Player: {{session['userName']}}</h1>
-  <h1>This is my results page</h1>
-  <h3>Score: {{session['score']}}</h3>
-  <form method="POST">
-    <button class="btn">Start Again</button>
-  </form>
+<div class="container" style="margin-top: 15%">
+  <div class="row">
+    <div class="col-md-12 boxBorder">
+      <h1>Player: {{session['userName']}}</h1>
+      <h1>This is my results page</h1>
+      <h3>Score: {{session['score']}}</h3>
+      <form method="POST">
+        <button class="btn">Start Again</button>
+      </form>
 
 
-  <p>{{dictionaries}}</p>
-  <p>{{dictionaries[0]['name']}} {{dictionaries[0]['score']}}</p>
-  {% for entry in dictionaries %}
-  <p>
-    {{entry.get('name')}} with score {{entry.get('score')}}
-  </p>
-  {% endfor %}
-  <p>{{wrong_answers}}</p>
+      <!-- <p>{{dictionaries}}</p> -->
+
+      <!-- {% for entry in dictionaries %}
+      <p>
+        {{entry.get('name')}} with score {{entry.get('score')}}
+      </p>
+      {% endfor %} -->
+      <!-- <p>{{wrong_answers}}</p> -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 boxBorder">
+      <h5>Answer for your riddles</h5>
+      {% for entry in wrong_answers %}
+        <ul>
+          <li>
+            {{entry.get('riddle')}} : <span>Answer: </span>{{entry.get('realAnswer')}}
+          </li>
+        </ul>
+      {% endfor %}
+    </div>
+  </div>
 </div>
-<div class="jumbotron indexForm">
-  {% for entry in wrong_answers %}
-    <p>
-      {{entry.get('riddle')}} : <span>Answer: </span>{{entry.get('realAnswer')}}
-    </p>
-  {% endfor %}
-</div>
-
 
 {% endblock %}
