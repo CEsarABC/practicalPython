@@ -58,3 +58,10 @@ span{
   text-transform: capitalize;
   color: rgb(35, 140, 207);
 }
+.modal{
+  background-color: #141414 !important;
+  color: black;
+}
+.modal-backdrop {
+     background-color: rgba(0,0,0,.0001) !important;
+}

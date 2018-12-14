@@ -12,10 +12,42 @@
 
   </div>
   <div class="col-md-6 boxBorder">
+    <div>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#Modal">
+        See the game rules
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="ModalLabel">Game Rules</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <ul>
+                <li>There are 3 riddles per game</li>
+                <li>If your answer is a number, you need to spell it out</li>
+                <li>Two words is the maximun on any answer</li>
+                <li>Some of the ansers will need a determiner for its noun, ex. "a dog"</li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+
     <p>Please insert your name to start the game</p>
     <!-- <label for="userForm"></label> -->
     <form method='POST'>
-      <input type="text" name='UsernameInput' maxlength="12" placeholder="required" required/>
+      <input type="text" name='UsernameInput' maxlength="12" placeholder="required" required autofocus/>
       <div>
         <button type="submit" class="btn btn-primary">Ok</button>
       </div>
