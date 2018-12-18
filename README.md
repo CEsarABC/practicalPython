@@ -2,6 +2,8 @@
 
 ## Important Flask testing
 
+You will use sessions again in Django. The only testing you have covered up till now is Python unittest so it is better suited to testing logic like game_riddle. To do this it is easier to move the functions outside the app route so you can test them. Then just call the function in the app route. 
+
 https://github.com/CEsarABC/practicalPython
 
 * basic project tree

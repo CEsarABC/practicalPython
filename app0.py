@@ -1,5 +1,6 @@
 from flask import Flask,render_template,session,redirect,url_for,request
 
+''' this is the copy of the main application -just for testing'''
 
 app = Flask(__name__, static_url_path='/static')
 app.config['SECRET_KEY'] = 'mykey'
@@ -56,14 +57,14 @@ def root():
         return redirect(url_for('run_game'))
 
     else:
-        session['count'] = 0
-        session['user'] = ''
+        #session['count'] = 0
+        #session['user'] = ''
         session['score'] = 0
 
     if 'counter' in session and session.get('counter') > 0:
         session['counter'] = session.get('counter') + 1
 
-    return 'this is response'
+    return render_template('index.html')
 
 
 ############ second definition accessing riddles and taking inputs
@@ -111,21 +112,21 @@ def run_game():
 
 
     session['riddle']=riddles[session.get('counter')]
-    #return render_template('game.html', dictionaries = dictionaries, wrong_answers=wrong_answers)
+    return render_template('game.html', dictionaries = dictionaries, wrong_answers=wrong_answers)
 
 
-    '''Testing ssessions for /game
-    session['userName'], session['riddle'], session['score']'''
+    # '''Testing ssessions for /game
+    # session['userName'], session['riddle'], session['score']'''
+    #
+    # if 'userInput' in session:
+    #     return 'session is active'
+    # return 'session not active'
+    # if 'riddle' in session:
+    #     return 'session is active'
+    # return 'session not active'
 
-    if 'userInput' in session:
-        return 'session is active'
-    return 'session not active'
-    if 'riddle' in session:
-        return 'session is active'
-    return 'session not active'
 
-
-@app.route('/results')
+@app.route('/results', methods=['GET','POST'])
 def results():
     if 'count' in session:
         newDict ={

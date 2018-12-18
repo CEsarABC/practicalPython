@@ -107,26 +107,23 @@ def run_game():
             session['counter'] = 0
             return redirect(url_for('results')) #make a new start
         elif session.get('counter') == 19 :
-            #session['counter'] = 0
             return redirect(url_for('results'))
-        # else:
-        #     return redirect(url_for('run_index'))
 
-        #need to add if session[counter]=14 end of the quiz
-        #redirect results
 
     session['riddle']=riddles[session.get('counter')]
-        #return redirect(url_for('run_index'))
+    #return render_template('game.html', dictionaries = dictionaries, wrong_answers=wrong_answers)
 
-    '''Testing ssessions'''
-    
+
+    '''Testing ssessions for /game
+    session['userName'], session['riddle'], session['score']'''
+
     if 'userInput' in session:
         return 'session is active'
-    return 'session is active'
+    return 'session not active'
     if 'riddle' in session:
         return 'session is active'
-    return 'session is active'
-    #return render_template('game.html', dictionaries = dictionaries, wrong_answers=wrong_answers)
+    return 'session not active'
+
 
 @app.route('/results')
 def results():
@@ -136,12 +133,13 @@ def results():
         'score': session['score']
         }
         dictionaries.append(newDict)
+
 ###### test for dictionary
     for entry in dictionaries:
         print(entry.get('name'))
     if request.method == 'POST':
         return redirect(url_for('root'))
-    # need to clear the session for the next player
+
     print(session['counter'])
     return render_template('results.html', dictionaries = dictionaries, wrong_answers=wrong_answers)
 

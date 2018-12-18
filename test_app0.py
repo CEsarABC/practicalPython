@@ -3,19 +3,7 @@ from unittest import TestCase
 import flask
 
 
-# class TestSession_kimi(TestCase):
-#     def setUp(self):
-#         self.app = app.test_client()
-#
-#     def test_with_session(self):
-#         with self.app as c:
-#             with c.session_transaction() as sess:
-#                 sess['mami'] = True
-#             resp = c.get('/')
-#         self.assertEqual(b'this is response', resp.data)
-
-
-class TestSession_cesar(TestCase):
+class TestSession_userName(TestCase):
     def setUp(self):
         self.app = app.test_client()
 
@@ -29,3 +17,48 @@ class TestSession_cesar(TestCase):
                 sess['userName'] = 'cesar'
             rv = c.get('/')
             assert flask.session['userName'] == 'cesar'
+
+class TestSession_score(TestCase):
+    def setUp(self):
+        self.app = app.test_client()
+
+    ''' definition calling the test_client and joining the
+    session_transaction to give content to the session,
+    I give it a value then test the flask session in the application '''
+
+    def test_with_session(self):
+        with app.test_client() as c:
+            with c.session_transaction() as sess:
+                sess['score'] = 0
+            rv = c.get('/')
+            assert flask.session['score'] == 0
+
+class TestSession_counter(TestCase):
+    def setUp(self):
+        self.app = app.test_client()
+
+    ''' definition calling the test_client and joining the
+    session_transaction to give content to the session,
+    I give it a value then test the flask session in the application '''
+
+    def test_with_session(self):
+        with app.test_client() as c:
+            with c.session_transaction() as sess:
+                sess['counter'] = 0
+            rv = c.get('/')
+            assert flask.session['counter'] == 0
+
+class TestSession_riddle(TestCase):
+    def setUp(self):
+        self.app = app.test_client()
+
+    ''' definition calling the test_client and joining the
+    session_transaction to give content to the session,
+    I give it a value then test the flask session in the application '''
+
+    def test_with_session(self):
+        with app.test_client() as c:
+            with c.session_transaction() as sess:
+                sess['riddle'] = 'This is a ridddle'
+            rv = c.get('/game')
+            assert flask.session['riddle'] == 'This is a ridddle'
