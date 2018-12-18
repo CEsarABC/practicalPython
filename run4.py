@@ -1,3 +1,4 @@
+import os
 from flask import Flask,render_template,session,redirect,url_for,request
 
 
@@ -50,6 +51,13 @@ dictionaries = []
 just if wrong answer is presented - run_game()'''
 
 wrong_answers = []
+print(type(wrong_answers))
+# entry1 = ''
+# if entry1 in wrong_answers:
+#     del wrong_answers[0]
+#     del wrong_answers[1]
+#     del wrong_answers[2]
+
 
 '''the first function to take the player name,
 show the rules and redirect to the game'''
@@ -66,8 +74,10 @@ def root():
     in session or is more that 0 '''
     ''' this counter helps interacting with the actual session, and is not
     reseted in order to have diferent riddles every turn in the game session '''
-
+    ''' wrong_answers.clear() is not working in previous versions of phyton
+    run with python 3.x'''
     wrong_answers.clear()
+
     if request.method == 'POST':
         if 'counter' in session and session.get('counter') > 0:
             session['counter'] = session.get('counter') + 1
@@ -176,6 +186,10 @@ def results():
     print(session['counter'])
     return render_template('results.html', dictionaries = dictionaries, wrong_answers=wrong_answers)
 
+''' To run in cloud 9'''
+# if __name__ == '__main__':
+#     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')),debug=True)
 
+''' To run in Atom'''
 if __name__ == '__main__':
     app.run(debug=True)
