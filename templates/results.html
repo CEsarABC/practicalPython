@@ -1,42 +1,43 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container" style="margin-top: 15%">
-  <div class="row">
-    <div class="col-md-8 boxBorder">
-      <h1>Player: {{session['userName']}}</h1>
-      <h1>This is my results page</h1>
-      <h3>Score: {{session['score']}}</h3>
-      <form method="POST">
-        <button type="submit" class="btn btn-primary">Start Again</button>
-      </form>
-    </div>
-
-    <div class="col-md-4 boxBorder">
-      <h3>Leaderboard</h3>
-      {% for entry in dictionaries %}
-      <ul>
-        <li>
-          <span class="answer">{{entry.get('name')}}</span> score <span class="answer">{{entry.get('score')}}</span>
-        </li>
-      </ul>
-      {% endfor %}
-      <!-- <p> older players{{dictionaries}}</p> -->
-      <!-- <p>{{new_dict}}</p> -->
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 boxBorder">
-      <h5>Answers for your riddles</h5>
-      {% for entry in wrong_answers %}
+<div class="container">
+  <div class="container" style="margin-top: 15%">
+    <div class="row">
+      <div class="col-md-8 boxBorder">
+        <h1>Player: <span class='answer'>{{session['userName']}}</span></h1>
+        <h1>This is my results page</h1>
+        <h3>Score: {{session['score']}}</h3>
+        <form method="POST">
+          <button type="submit" class="btn btn-primary">Start Again</button>
+        </form>
+      </div>
+  
+      <div class="col-md-4 boxBorder">
+        <h3>Leaderboard</h3>
+        {% for entry in dictionaries %}
         <ul>
           <li>
-            {{entry.get('riddle')}} : <span>Answer: </span>{{entry.get('realAnswer')}}
+            <span class="answer">{{entry.get('name')}}</span> score <span class="answer">{{entry.get('score')}}</span>
           </li>
         </ul>
-      {% endfor %}
+        {% endfor %}
+        <!-- <p> older players{{dictionaries}}</p> -->
+        <!-- <p>{{new_dict}}</p> -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 boxBorder">
+        <h5>Answers for your riddles</h5>
+        {% for entry in wrong_answers %}
+          <ul>
+            <li>
+              {{entry.get('riddle')}} : <span>Answer: </span>{{entry.get('realAnswer')}}
+            </li>
+          </ul>
+        {% endfor %}
+      </div>
     </div>
   </div>
 </div>
-
 {% endblock %}

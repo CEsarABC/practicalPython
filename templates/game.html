@@ -1,54 +1,56 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="col-md-12">
-  <div class="userTitle">
-    <h1>Player: <span class="answer">{{session['userName']}}</span></h1>
+<div class="container">
+  
+  <div class="col-md-12">
+    <div class="userTitle">
+      <h1>Player: <span class="answer">{{session['userName']}}</span></h1>
+    </div>
   </div>
-</div>
-
-<div class="row">
-  <div class="col-md-12 boxBorder">
-    <h1>Riddle: {{session['riddle']}}</h1>
+  
+  <div class="row">
+    <div class="col-md-12 boxBorder">
+      <h1>Riddle: {{session['riddle']}}</h1>
+    </div>
   </div>
-</div>
-
-<div class="row">
-  <div class="col-md-8 boxBorder">
-    <form method="POST">
-          <!-- <label for='answer'>Answer</label> -->
-          <input type="text" name='answerInput' placeholder="Your Answer" autofocus />
-          <button type="submit" class="btn btn-primary">Send/Pass</button>
-
-    </form>
-    <br />
-    <h5>Last answer:<span class="answer"> {{session['userInput']}}</span></h4>
-    <h5>Score:  {{session['score']}}</h4>
-  </div/>
-
-  <div class="col-md-4 boxBorder">
-    <h3>Leaderboard</h3>
-    {% for entry in dictionaries %}
-    <ul>
-      <li>
-        <span class="answer">{{entry.get('name')}}</span> score <span class="answer">{{entry.get('score')}}</span>
-      </li>
-    </ul>
-    {% endfor %}
-    <!-- <p> older players{{dictionaries}}</p> -->
-    <!-- <p>{{new_dict}}</p> -->
+  
+  <div class="row">
+    <div class="col-md-8 boxBorder">
+      <form method="POST">
+            <!-- <label for='answer'>Answer</label> -->
+            <input type="text" name='answerInput' placeholder="Your Answer" autofocus />
+            <button type="submit" class="btn btn-primary">Send/Pass</button>
+  
+      </form>
+      <br />
+      <h5>Last answer:<span class="answer"> {{session['userInput']}}</span></h4>
+      <h5>Score:  {{session['score']}}</h4>
+    </div/>
+  
+    <div class="col-md-4 boxBorder">
+      <h3>Leaderboard</h3>
+      {% for entry in dictionaries %}
+      <ul>
+        <li>
+          <span class="answer">{{entry.get('name')}}</span> score <span class="answer">{{entry.get('score')}}</span>
+        </li>
+      </ul>
+      {% endfor %}
+      <!-- <p> older players{{dictionaries}}</p> -->
+      <!-- <p>{{new_dict}}</p> -->
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-12 boxBorder">
-    {% for entry in wrong_answers %}
-      <p>{{entry.get('riddle')}}</p>
-      <p>your answer: <span class="answer">{{entry.get('wrongInput')}}</span></p>
-    {% endfor %}
+  <div class="row">
+    <div class="col-md-12 boxBorder">
+      {% for entry in wrong_answers %}
+        <p>{{entry.get('riddle')}}</p>
+        <p>your answer: <span class="answer">{{entry.get('wrongInput')}}</span></p>
+      {% endfor %}
+    </div>
   </div>
+
 </div>
-
-
 
 
 

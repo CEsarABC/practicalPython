@@ -1,5 +1,9 @@
 /* box-shadow: none|h-offset v-offset blur spread color |inset|initial|inherit; */
 
+#main_row{
+  margin-top: 25% !important;
+}
+
 .verticalAlign{
   display: flex;
   align-items: center;
@@ -16,6 +20,7 @@ body{
   color: orange;
   font-family: 'Nanum Gothic', sans-serif;
 }
+
 .topMargin{
   margin-top: 20%;
 }
@@ -25,16 +30,19 @@ h1{
   color: white;
   font-size: 2.5em;
 }
+
 .indexForm{
   text-align: center;
   margin-top: 20%;
 }
+
 .jumbotron{
   font-family: 'Lobster', cursive;
   /* background-image: linear-gradient(-90deg,#F9DEB9, #F2C2B3); */
   background-color: #141414;
   border: solid 1px orange;
 }
+
 .userTitle h1{
   text-align: right;
   margin-top: 5% ;
@@ -42,6 +50,7 @@ h1{
   font-size: 2em;
   color: orange;
 }
+
 h3{
   font-family: 'Lobster', cursive;
   color: orange;
@@ -49,18 +58,22 @@ h3{
 span{
   color: rgb(35, 140, 207);
 }
+
 #effects{
   color: white;
   text-shadow: 0 0 15px #FFF, 0 0 30px #49FF18, 0 0 75px #49ff18, 2px 2px 2px rgba(28,110,164,0);
 }
+
 .answer{
   text-transform: capitalize;
   color: rgb(35, 140, 207);
 }
+
 .modal{
   background-color: #141414 !important;
   color: black;
 }
+
 .modal-backdrop {
      background-color: rgba(0,0,0,.0001) !important;
 }
@@ -103,6 +116,18 @@ span{
   .userTitle h1{
     font-size: 1.8em;
   }
+  modal{
+    font-size: small;
+  }
+  .btn-dark{
+    font-size: smaller;
+  }
+  .btn-primary{
+    font-size: smaller;
+  }
+  #main_row{
+  margin-top: 5% !important;
+  }
 }
 
 /* Portrait phones and smaller */
@@ -117,10 +142,22 @@ span{
     font-size: small;
   }
   body{
-    font-size: small
+    font-size: small;
   }
   .userTitle h1{
     font-size: 1.2em;
+  }
+  modal{
+    font-size: small;
+  }
+  .btn-dark{
+    font-size: smaller;
+  }
+  .btn-primary{
+    font-size: smaller;
+  }
+  #main_row{
+  margin-top: 5% !important;
   }
    
 }
