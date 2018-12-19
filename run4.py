@@ -187,9 +187,9 @@ def results():
     return render_template('results.html', dictionaries = dictionaries, wrong_answers=wrong_answers)
 
 ''' To run in cloud 9'''
-# if __name__ == '__main__':
-#     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')),debug=True)
+if __name__ == '__main__':
+    app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')),debug=True)
 
 ''' To run in Atom'''
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
