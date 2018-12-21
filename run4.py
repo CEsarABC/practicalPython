@@ -5,8 +5,8 @@ from flask import Flask,render_template,session,redirect,url_for,request
 app = Flask(__name__, static_url_path='/static')
 app.config['SECRET_KEY'] = 'mykey'
 
-
-##################### storing data in lists
+''' These lists are here to store information and make this
+information available to all functions'''
 user_answers = []
 riddles_dict = []
 riddles = []
@@ -34,13 +34,13 @@ for i, text in enumerate(lines):
 number_of_riddles = len(riddles)
 riddles_and_answers = zip(riddles, answers)
 riddles_list = list(riddles_and_answers)
+
+# manual testing
 #print(riddles_list)
-
-
 #print(riddles_list[0][1])
 
-
-"""first definition, first validation, redirecting to next game, user name"""
+''' These lists are here to store information and make this
+information available to all functions'''
 
 ''' dictionaries acts as a global list to store
 the user name and final score for that game - results()'''
@@ -51,12 +51,8 @@ dictionaries = []
 just if wrong answer is presented - run_game()'''
 
 wrong_answers = []
-print(type(wrong_answers))
-# entry1 = ''
-# if entry1 in wrong_answers:
-#     del wrong_answers[0]
-#     del wrong_answers[1]
-#     del wrong_answers[2]
+# manual testing
+#print(type(wrong_answers))
 
 
 '''the first function to take the player name,
@@ -64,8 +60,8 @@ show the rules and redirect to the game'''
 
 @app.route('/', methods=['GET','POST'])
 def root():
-    ''' at the start of the function some sessions are crested
-    in order to store information and to cear the sameinformaion
+    ''' at the start of the function some sessions are created
+    in order to store information and to clear the same informaion
     everytime we start a new game. The list for wrong answers
     is cleaned at the begining of every game  '''
     ''' On the form request I start a counter which will present
@@ -90,6 +86,7 @@ def root():
         session['score'] = 0
         session['userInput'] = ''
 
+    # manual testing
     # if 'counter' in session and session.get('counter') > 0:
     #     session['counter'] = session.get('counter') + 1
 
@@ -101,7 +98,7 @@ def root():
 @app.route('/game', methods=['GET','POST'])
 def run_game():
 
-    ''' game brings the riddle and a form, this form has an input which will
+    ''' game brings the riddle and a form. The form has an input which will
     on request activate a simple function to compare the user answer to the
     actual answer, using a loop to iterate through a list of tupples created
     previously, if the conditions are both true the score increases'''
@@ -133,7 +130,6 @@ def run_game():
     else:
         if 'counter' not in session:
             session['counter'] = 0
-                #session['riddle']=riddles[0]
             session['score'] = 0
 
     ''' this counters will redirect to results after 3 riddles, every 3 riddles
@@ -144,28 +140,30 @@ def run_game():
     in the txt file  '''
 
     if 'counter' in session:
-        #session['counter'] = session.get('counter') + 1
+        
         if session.get('counter') == 3 :
-            return redirect(url_for('results'))
+            return redirect(url_for('game_results'))
         elif session.get('counter') == 7 :
-            return redirect(url_for('results'))
+            return redirect(url_for('game_results'))
         elif session.get('counter') == 11 :
-            return redirect(url_for('results'))
+            return redirect(url_for('game_results'))
         elif session.get('counter') == 15 :
             session['counter'] = 0
-            return redirect(url_for('results')) #make a new start
+            return redirect(url_for('game_results')) #make a new start
         elif session.get('counter') == 19 :
-            #session['counter'] = 0
-            return redirect(url_for('results'))
+            return redirect(url_for('game_results'))
 
 
     session['riddle']=riddles[session.get('counter')]
-        #return redirect(url_for('run_index'))
+        
 
     return render_template('game.html', dictionaries = dictionaries, wrong_answers=wrong_answers)
 
+''' Results seccion brings the riddles with actual answers, leaderboard and the start a new game.
+when the form is validated the fuction stores a session to keep users score and name '''
+
 @app.route('/results', methods=['GET','POST'])
-def results():
+def game_results():
 
     '''test for dictionary'''
     # for entry in dictionaries:

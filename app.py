@@ -28,10 +28,7 @@ for i, text in enumerate(lines):
 number_of_riddles = len(riddles)
 riddles_and_answers = zip(riddles, answers)
 riddles_list = list(riddles_and_answers)
-#print(riddles_list)
 total_users = []
-
-#print(riddles_list[0][1])
 
 
 """first definition, first validation, redirecting to next game, user name"""
@@ -63,7 +60,13 @@ def root():
     if 'counter' in session and session.get('counter') > 0:
         session['counter'] = session.get('counter') + 1
 
-    return render_template('index.html')
+    #return render_template('index.html')
+    
+    ''' testing session userName '''
+    
+    if 'userName' in session:
+        return 'userName is active'
+    return 'userName not active'
 
 
 ############ second definition accessing riddles and taking inputs
@@ -118,11 +121,9 @@ def run_game():
     session['userName'], session['riddle'], session['score']'''
 
     if 'userInput' in session:
-        return 'session is active'
-    return 'session not active'
-    if 'riddle' in session:
-        return 'session is active'
-    return 'session not active'
+        return 'userInput is active'
+    return 'userInput not active'
+    
 
 
 @app.route('/results')
@@ -141,11 +142,18 @@ def results():
         return redirect(url_for('root'))
 
     print(session['counter'])
-    return render_template('results.html', dictionaries = dictionaries, wrong_answers=wrong_answers)
+    #return render_template('results.html', dictionaries = dictionaries, wrong_answers=wrong_answers)
+   
+    
+   
+    '''' testing session in results '''
+    
+    
+    if 'counter' in session:
+        return 'counter is active'
+    return 'counter not active'
 
-@app.route('/rules')
-def rules():
-    return render_template('rules.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

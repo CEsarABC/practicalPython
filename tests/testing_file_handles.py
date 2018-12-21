@@ -5,9 +5,10 @@ riddles_dict = []
 riddles = []
 answers = []
 
-# Accessing the riddles to pick questions and answers
+''' testing the files handle, by bringing the main functions
+and print results after input '''
 
-with open('../data/riddles1.txt', 'r') as file:
+with open('../data/riddles2.txt', 'r') as file:
     lines = file.read().splitlines()
 
 for i, text in enumerate(lines):
@@ -15,7 +16,9 @@ for i, text in enumerate(lines):
         riddles.append(text)
     else:
         answers.append(text)
-
+        
+print(riddles)
+print(answers)
 
 def ask_riddle():
     number_of_riddles = len(riddles)
@@ -37,7 +40,9 @@ def ask_riddle():
 
 
 
-#ask_riddle()
+ask_riddle()
+
+
 '''testing the input in capital letters,
     if the user inserts any capitals we need to be sure
     the word of phrase is converted to match the case
@@ -53,6 +58,9 @@ def my_function(answer):
 my_function("ANSWER")
 my_function("AnSweR")
 my_function("answer")
+
+''' function to verify the input text is does not have numbers or
+speceial characters or is an empty string '''
 
 def count_letters(answer):
     return (sum([1 for letter in answer if letter.isupper() or letter.islower()]))
