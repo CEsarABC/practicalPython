@@ -7,7 +7,7 @@ run3.py
 run5.py
 test_run.py
 sample
-env
+
 Python-3.6.4
 .idea
 __pycache__
@@ -25,9 +25,10 @@ test_flask_redirect.py
 basic_test.py
 application_for_testing.py
 app0.py
-tests/test_app.py
-tests/test.py
-tests/test_app.py
-tests/makingDictionary.py
-tests/myDictionary.py
-tests/testing_sessions.py
+tests\test_app.py
+tests\test.py
+tests\test_app.py
+tests\makingDictionary.py
+tests\myDictionary.py
+tests\testing_sessions.py
+Python-3.6.4.tgz
