@@ -20,6 +20,8 @@ for i, text in enumerate(lines):
 print(riddles)
 print(answers)
 
+''' manual testing for game core funtionality '''
+
 def ask_riddle():
     number_of_riddles = len(riddles)
     riddles_and_answers = zip(riddles, answers)

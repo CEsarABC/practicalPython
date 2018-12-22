@@ -43,9 +43,14 @@
   </div>
   <div class="row">
     <div class="col-md-12 boxBorder">
+      <h3>Incorrect Answers</h3>
       {% for entry in wrong_answers %}
-        <p>{{entry.get('riddle')}}</p>
-        <p>your answer: <span class="answer">{{entry.get('wrongInput')}}</span></p>
+      <ul>
+        <li>
+          <p>{{entry.get('riddle')}} your answer: <span class="answer">{{entry.get('wrongInput')}}</span></p>
+        </li>
+      </ul>
+        
       {% endfor %}
     </div>
   </div>

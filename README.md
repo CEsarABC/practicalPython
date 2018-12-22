@@ -1,54 +1,95 @@
-# Coding in ATOM 1.32.2
+# Practical python mini project
+This project focuses in flask and how python code can be used to make web applications using logic.
 
-## Important Flask testing
+when I was thinking how to implement the game it was clear that I needed to separate the login in sections and link the user activity in the web with the python logic. it is challenging to go back and forth between python, flask and HTML. the application looks simple as it is but took me a while to figure it out, to understand the complexity of it all.
 
-You will use sessions again in Django. The only testing you have covered up till now is Python unittest so it is better suited to testing logic like game_riddle. To do this it is easier to move the functions outside the app route so you can test them. Then just call the function in the app route. 
+Cesar's riddle game successfully guides the user through this simple application and uses the technologies to store information and interact with the user in a clean manner.
 
-https://github.com/CEsarABC/practicalPython
+## Application guidelines
+  - [x] Web application that asks players to guess
+  - [x] player is presented with a riddle. Player enter their answer into a form and is submitted
+  - [x] if player guesses correctly, they are redirected to the next riddles
+  - [x] If player guesses incorrectly, their answer is stored and printed back, text area is cleaned
+  - [x] multiple players can play an instance of the game at the same time
+  - [x] Users are identified by their unique user name
+  - [x] leaderboard with scores and players, all recent users
 
-* basic project tree
+## Project guidelines
+  - [x] Logic written in python. other technologies used
+  - [ ] semantic HTML
+  - [x] Test driven development (see testing section)
+  - [x] Use Flask, to structure your project's back render
+  - [x] instructions to deploy (see deployment)
+  - [x] Make sure the site is responsive
+  - [x] User stories, wireframes
+  - [x] CSS and Bootstrap frameworks used
+  - [x] README.md file made
+  - [x] GitHub version control used during development
+  - [x] Final version of the code deployed in Heroku
+
+
+
+## Technologies used
+- HTML
+- CSS
+- Bootstrap 4.0
+- Python 3.6
+ - Virtualenv (virtual environment)
+ - Unittest
+- Flask
+- ATOM 1.32.2 (for offline coding)
+
+At the beginning of this project cloud9 presented challenges in the way it uses different versions of python, creating a virtual environment was a great move because the deployment to heroku was pretty easy.
+
+
+## basic project tree
+
   - practicalPython
       - data
-      - static
+      - static (css style sheet)
       - templates
-      - tests
-  - run4.py
-  - test_run1.py
+      - tests (different manual tests for sections of the application).
 
 
-* In tutorials we can not see any unittest applied to flask.
-* the mini project guide is clear on the use of TDD but finding it hard.
-* any other suggestions for testing??
-* testing cases work in some cases see test_run1.py
-  running
-  >>python -m unittest test_run1.py
+  - run4.py (main application)
+  - app.py (copy of the main application for testing only)
+  - test_app.py (Unittest for app.py)
 
-  5 tests ran FAILED (failures=1, errors=1).
-  last test case does not find the page results.html. why?
-  last test followed same principle but failed
-  - [x] taste case for root
-  - [x] taste case for game
-  - [ ] taste case for results 'not working'
+## UX
+- The application needed to be clean and simple for any user to understand the dynamic of the game, three sections where created in order to create a path to follow.
+- the section one is the introduction where the user gets to understand how the game works. there is a set of rules as guide.
+- section two contains the game where the user clearly sees a layout which is divided in sections and directs the attention to the riddle, invites the user to compete because there is a leaderboard in use where you can see the previous players score and name. the layout brings the riddles with wrong answers and gives a score if the guess is correct.
+- section three brigs the final score and the riddles with their answers for the player's amusement. there is an open invitation to try again but this time the riddles will be different, again for the amusement of the player
+- leaderboard is kept for other players to see inviting competition
+- the design focuses the player with high contrast and expresses hierarchy with the use of fonts sizes and expresses dynamism with the use of fonts. looking for simplicity but visual appeal.
 
-## how to do other tests?
-_______________________________________________________________
+## Features
+- Section one of the application brings a simple modal to explain the simple rules of the game, a form which asks the player for a name and stores the name in a session
+- Section two brings the game where an session counter starts in order to show a different riddle every time the form validates. leaderboard shows the last players and the bottom section brings the riddles the user could not answer correctly. the form validates with answer or without answer in case the user can not think of an answer.
+- Section three brigs the results page after 3 riddles, brings the incorrect answered riddles with answers from the dictionary where stored. After validated saves player's name and score to keep in the leaderboard.
+- Redirection to section one will clean the wrong answers but does not re start the counter used to display the riddles, in order to have a different set of riddles every new game (total of 18 riddles)
 
- ## This is the mini project for practical python
+### Left to Implement
+- [ ] wanted to bring riddles in random order
+- [ ] writing all sessions to files
+- [ ] creating a data base
 
- my idea is to create a web app in which you ask the user for a user name and the user gets directed to the game page where he starts with a question, after the user input his answer this answer is stored just if is wrong and displayed back to the user giving a second chance for the user to answer, if the question is not answered the second time, it continues to the next riddle, keeping score and answers for the session, there are 5 questions in total for game, at the end the user gets redirected to the results page where all the riddles and answers are displayed
+## Testing
+Testing part if the project is divided into two sections, the unittest and the manual testing.
 
- in theory creating an app that can ask a question and create input for answers is easy. I started to create the application in python to see how that might work.
- (testing.py)
- using file handlers I put questions and answers together, loops help me compare the input to the answer for the specific question, after the loop compares gives a message and a score.
+- Unittest was difficult to implement due to the relation between the material in the course and flask is not existent(testing), Unittest was used to test sessions and page responses and no the logic.
+  - files **test_app.py** and **app.py** where created to use unittest by modifying the response data in the functions, to check for the existence of sessions in the document
+    - **app.py lines (65, 120, 149)**
+  - these two tests files where left in the root folder of the project after creating path problems when being used inside test folder
 
- Now using flask Its been challenging, in python the code runs continuously, but html renders code and then stops, how can I render question after question with out changing pages and store the user input at the same time.
+- Manual tests where employed in the test folder within the project and they are testing the logic in the python code
+  - **testing_dictionary.py** was created to test the logic in inputs storage and the use of session to make new dictionaries
+  - **testing_file_handles.py** was created to test the use of file handles, reading from a file and creating lists and dictionaries with the test file. testing assertions with user input
 
- I've seen that in the html any variables stored in memory disappear after loading any other html page, so can't keep scores or user inputs for the session.
+- Other tests include the HTML test by running the application locally and checking for issues in the layouts of the different pages.
 
- now working with Flask Sessions I can keep the information.
+- tests for Bootstrap and media queries for mobile devices, readability and organization of columns and rows
 
- the challenge is trying to render this python app in the html using flask, in the game.html I'm, trying to bring the loop and render the riddles in the page.
+- tested in mobile devices, tablets, laptops and pcs.
 
- Using flask sessions managed to be useful as I can display now the riddle and the counter but the challenge is to bring a new riddle with user validation
-
- new riddles showing after user validation, storing the last answer and trying to display score, score not storing points, probably to the code order
+- tested in all devices after Heroku deployment
