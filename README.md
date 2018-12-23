@@ -49,6 +49,7 @@ At the beginning of this project cloud9 presented challenges in the way it uses 
       - static (css style sheet)
       - templates
       - tests (different manual tests for sections of the application).
+      - Wireframes
 
 
   - run4.py (main application)
@@ -93,3 +94,49 @@ Testing part if the project is divided into two sections, the unittest and the m
 - tested in mobile devices, tablets, laptops and pcs.
 
 - tested in all devices after Heroku deployment
+
+
+## Deployment
+- project fully deployed to Heroku  https://practical-project.herokuapp.com/
+  - The project was deployed following the guidelines from the code academy materials
+  - Working in virtual environment
+  - New project was created in Heroku
+  - requirements.txt was created
+  - Procfile was created
+  - Heroku remote was set in order to push application
+  - Configuration variables were changed as indicated to have 'IP' and 'PORT'
+
+
+- To run this code locally I have some lines of code one to use in cloud9 and one to use in any other IDE like Atom which I used when not connected to the internet
+
+- last Python version enabled for cloud9 was installed **Python-3.6.2** in order to create the virtual environment based on it. Code taken from https://packaging.python.org/guides/installing-using-pip-and-virtualenv/
+
+- my project in cloud9 had the pip module updated to the last version and the module **virtualenv** installed to manage my environment
+- after the environment was created based on python3.6 flask was installed
+- requirements.txt
+    - Click==7.0
+    - Flask==1.0.2
+    - itsdangerous==1.1.0
+    - Jinja2==2.10
+    - MarkupSafe==1.1.0
+    - Werkzeug==0.14.1
+
+**Running locally - in the terminal**
+- to run this application outside the virtual environment **$ python3 run4.py**
+- to activate the virtual environment **$ source env/bin/activate**
+- to run this application inside the virtual environment **$ python run4.py**
+
+## Credits
+
+- some samples where taken from http://flask.pocoo.org/docs/0.12/testing/ for testing flask sessions
+- this module was complemented by couple of courses from **Udemy**
+  - Automated software testing with python
+  - Python and Flask bootcamp
+
+## Media
+- fonts taken from google fonts
+- no other external media used
+
+## Acknowledgments
+thanks to the code institute for the support, this last project its been changeling and took me some time to develop, I have learned lots and I hope to keep learning to become the professional I want to be.
+thanks to the slack channels for the supports and the code academy tutors which had always answers to help me move forward.

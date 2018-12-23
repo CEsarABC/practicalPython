@@ -2,17 +2,18 @@
 
 
 {% block content %}
-<div class="container">
-  <div class="row" id='main_row'>
+<section class="container">
+  <article class="row" id='main_row'>
   
     <div class="col-md-6 col-sm-12 col-12">
       <div style="padding:2em">
         <h1 id='header_title'>WELCOME TO CESAR'S RIDDLE GAME</h1>
+        <p>Test your avility to unmask deception and your general knowlwdge in all non important matters</p>
       </div>
   
   
     </div>
-    <div class="col-md-6 col-sm-12 col-12 boxBorder">
+    <aside class="col-md-6 col-sm-12 col-12 boxBorder">
       <div>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#Modal">
@@ -33,7 +34,7 @@
                   <li>There are 3 riddles per game</li>
                   <li>If your answer is a number, you need to spell it out</li>
                   <li>Two words is the maximun on any answer</li>
-                  <li>Some of the ansers will need a determiner for its noun, ex. "a dog"</li>
+                  <li>Some of the answers will need a determiner for its noun, ex. "a dog"</li>
                 </ul>
               </div>
               <div class="modal-footer">
@@ -54,9 +55,9 @@
         </div>
       </form>
     <!--<p>{{session['counter']}}</p>-->
-    </div>
-  </div>
-</div>
+    </aside>
+  </article>
+</section>
 
 
 {% endblock %}

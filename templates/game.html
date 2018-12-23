@@ -3,19 +3,19 @@
 {% block content %}
 <div class="container">
   
-  <div class="col-md-12">
+  <header class="col-md-12">
     <div class="userTitle">
       <h1>Player: <span class="answer">{{session['userName']}}</span></h1>
     </div>
-  </div>
+  </header>
   
-  <div class="row">
+  <section class="row">
     <div class="col-md-12 boxBorder">
       <h1>Riddle: {{session['riddle']}}</h1>
     </div>
-  </div>
+  </section>
   
-  <div class="row">
+  <article class="row">
     <div class="col-md-8 boxBorder">
       <form method="POST">
             <!-- <label for='answer'>Answer</label> -->
@@ -28,7 +28,7 @@
       <h5>Score:  {{session['score']}}</h4>
     </div/>
   
-    <div class="col-md-4 boxBorder">
+    <aside class="col-md-4 boxBorder">
       <h3>Leaderboard</h3>
       {% for entry in dictionaries %}
       <ul>
@@ -39,9 +39,9 @@
       {% endfor %}
       <!-- <p> older players{{dictionaries}}</p> -->
       <!-- <p>{{new_dict}}</p> -->
-    </div>
-  </div>
-  <div class="row">
+    </aside>
+  </article>
+  <article class="row">
     <div class="col-md-12 boxBorder">
       <h3>Incorrect Answers</h3>
       {% for entry in wrong_answers %}
@@ -53,7 +53,7 @@
         
       {% endfor %}
     </div>
-  </div>
+  </article>
 
 </div>
 

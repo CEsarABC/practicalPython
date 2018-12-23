@@ -188,6 +188,6 @@ def game_results():
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')),debug=True)
 
-''' To run in Atom'''
+''' To run in Atom (offline)'''
 # if __name__ == '__main__':
 #     app.run(debug=True)
