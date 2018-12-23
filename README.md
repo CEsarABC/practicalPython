@@ -70,9 +70,12 @@ At the beginning of this project cloud9 presented challenges in the way it uses 
 - Redirection to section one will clean the wrong answers but does not re-start the counter used to display the riddles, in order to have a different set of riddles every new game (total of 18 riddles)
 
 ### Left to Implement
+Bringing this project to life took me around a month and some ideas where left on the side just because of time
 - [ ] Wanted to bring riddles in random order
 - [ ] Writing all sessions to files
 - [ ] Creating a data base
+- [ ] giving the user option to choose number of riddles
+- [ ] use of JavaScript to make it more interactive 
 
 ## Testing
 The testing part of the project is divided into two sections, the unittest and the manual testing.
@@ -137,6 +140,7 @@ The testing part of the project is divided into two sections, the unittest and t
 - This module was complemented through a couple of courses from **Udemy**
   - Automated software testing with python
   - Python and Flask bootcamp
+- Modal component lines of code taken from https://getbootstrap.com/docs/4.0/components/modal/ 
 
 ## Media
 - Fonts taken from google fonts
@@ -145,3 +149,4 @@ The testing part of the project is divided into two sections, the unittest and t
 ## Acknowledgments
 Thank you to the code institute for the support. This last project has been challenging and took me some time to develop. I have learned a lot and I hope to keep learning to become the professional I want to be.
 Thank you to the slack channels for the support and the code academy tutors which always had answers to help me move forward.
+Merry Christmas guys and girls.

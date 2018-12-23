@@ -1,8 +1,9 @@
 from app import app
+import unittest
 from unittest import TestCase
 import flask
 
-''' Tessting pages response by code status
+''' Testing pages response by code status
 and follow_redirects '''
 
 class TestRun(TestCase):
@@ -22,7 +23,7 @@ class TestGame(TestCase):
 
             response = c.get('/game', follow_redirects=True)
             self.assertEqual(response.status_code, 200)
-            
+
 '''unknown issue testing results page  '''
 
 # class TestResults(TestCase):
@@ -45,7 +46,7 @@ class TestGame(TestCase):
 
 ''' Testing sessions in the main application
 by taking the session from the main application and
-giving it value in otder to test it, I have created a copy of
+giving it value in order to test it, I have created a copy of
 the main application (app.py) with new lines of code in order to test responses '''
 
 class TestSession_userinput(TestCase):
@@ -81,13 +82,8 @@ class TestSession_userName(TestCase):
             resp = c.get('/')
         self.assertEqual(b'userName is active', resp.data)
 
-# class TestSession_kimi(TestCase):
-#     def setUp(self):
-#         self.app = app.test_client()
 
-#     def test_with_session(self):
-#         with self.app as c:
-#             with c.session_transaction() as sess:
-#                 sess['kimi'] = False
-#             resp = c.get('/game')
-#         self.assertEqual(b'session not active', resp.data)
+
+
+if __name__ == '__main__':
+    unittest.main()
