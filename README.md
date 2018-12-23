@@ -75,7 +75,7 @@ Bringing this project to life took me around a month and some ideas where left o
 - [ ] Writing all sessions to files
 - [ ] Creating a data base
 - [ ] giving the user option to choose number of riddles
-- [ ] use of JavaScript to make it more interactive 
+- [ ] use of JavaScript to make it more interactive
 
 ## Testing
 The testing part of the project is divided into two sections, the unittest and the manual testing.
@@ -85,8 +85,12 @@ The testing part of the project is divided into two sections, the unittest and t
     - **app.py lines (65, 120, 149)**
   - These two test files were left in the root folder of the project after creating path problems when being used inside the test folder
   - to run test_app.py in root folder `$ python test_app.py`
-  - to run tests in dictionary `$python test_dictionary.py`  and
-  `$python testing_file_handles.py`
+  - to run tests in dictionary `$ python test_dictionary.py`  and
+  `$ python testing_file_handles.py`
+
+
+- **Issue** line 27 of **test_app.py**, where the page results
+does not get the 200 status code. checked but could not find reason. the issue does not affect the application.
 
 
 - Manual tests were employed in the **test** folder within the project and they are testing the logic in the python code
@@ -140,7 +144,6 @@ The testing part of the project is divided into two sections, the unittest and t
 - This module was complemented through a couple of courses from **Udemy**
   - Automated software testing with python
   - Python and Flask bootcamp
-- Modal component lines of code taken from https://getbootstrap.com/docs/4.0/components/modal/ 
 
 ## Media
 - Fonts taken from google fonts
@@ -149,4 +152,4 @@ The testing part of the project is divided into two sections, the unittest and t
 ## Acknowledgments
 Thank you to the code institute for the support. This last project has been challenging and took me some time to develop. I have learned a lot and I hope to keep learning to become the professional I want to be.
 Thank you to the slack channels for the support and the code academy tutors which always had answers to help me move forward.
-Merry Christmas guys and girls.
+Merry Christmas guys and girls
