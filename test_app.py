@@ -80,6 +80,7 @@ class TestSession_userName(TestCase):
             with c.session_transaction() as sess:
                 sess['userName'] = True
             resp = c.get('/')
+        print(resp.data)
         self.assertEqual(b'<!DOCTYPE html>\n<html>\n  <head>\n    <m[3569 chars]tml>', resp.data)
 
 
