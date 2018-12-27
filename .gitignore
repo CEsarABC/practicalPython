@@ -7,10 +7,10 @@ run3.py
 run5.py
 test_run.py
 sample
-
-Python-3.6.4
+env/
+Python-3.6.4/
 .idea
-__pycache__
+__pycache__/
 oldcode.py
 run.py
 run1.py
