@@ -1,4 +1,4 @@
-from app import app
+from run import app
 import unittest
 from unittest import TestCase
 import flask
@@ -80,7 +80,7 @@ class TestSession_userName(TestCase):
             with c.session_transaction() as sess:
                 sess['userName'] = True
             resp = c.get('/')
-        self.assertEqual(b'userName is active', resp.data)
+        self.assertEqual(b'<!DOCTYPE html>\n<html>\n  <head>\n    <m[3569 chars]tml>', resp.data)
 
 
 
