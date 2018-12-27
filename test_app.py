@@ -1,4 +1,4 @@
-from run import app
+from app import app
 import unittest
 from unittest import TestCase
 import flask
@@ -24,54 +24,27 @@ class TestGame(TestCase):
             response = c.get('/game', follow_redirects=True)
             self.assertEqual(response.status_code, 200)
 
-'''unknown issue testing results page  '''
+# '''unknown issue testing results page  '''
 
-# class TestResults(TestCase):
-#     def test_game_results(self):
-#         with app.test_client() as c:
-#             response = c.get('/results')
-#             self.assertEqual(response.status_code, 200)
+class TestResults(TestCase):
+    def test_game_results(self):
+        with app.test_client() as c:
+            response = c.get('/results')
+            self.assertEqual(response.status_code, 200)
 
-#             response = c.get('/results', follow_redirects=True)
-#             self.assertEqual(response.status_code, 200)
+            response = c.get('/results', follow_redirects=True)
+            self.assertEqual(response.status_code, 200)
 
-# class TestResults(TestCase):
-#     def test_results(self):
-#         tester = app.test_client(self)
-#         response = tester.get('/results', content_type='html/text')
+# # class TestResults(TestCase):
+# #     def test_results(self):
+# #         tester = app.test_client(self)
+# #         response = tester.get('/results', content_type='html/text')
 
-#         self.assertEqual(response.status_code, 200)
-#         self.assertTrue(b'Leaderboard' in response.data)
+# #         self.assertEqual(response.status_code, 200)
+# #         self.assertTrue(b'Leaderboard' in response.data)
 
 
-''' Testing sessions in the main application
-by taking the session from the main application and
-giving it value in order to test it, I have created a copy of
-the main application (app.py) with new lines of code in order to test responses '''
-
-class TestSession_userinput(TestCase):
-    def setUp(self):
-        self.app = app.test_client()
-
-    def test_session_userInput(self):
-        with self.app as c:
-            with c.session_transaction() as sess:
-                sess['userInput'] = True
-            resp = c.get('/game')
-        self.assertEqual(b'userInput is active', resp.data)
-
-class TestSession_riddle(TestCase):
-    def setUp(self):
-        self.app = app.test_client()
-
-    def test_with_session(self):
-        with self.app as c:
-            with c.session_transaction() as sess:
-                sess['counter'] = True
-            resp = c.get('/results')
-        self.assertEqual(b'counter is active', resp.data)
-
-class TestSession_userName(TestCase):
+class TestSessions_root(TestCase):
     def setUp(self):
         self.app = app.test_client()
 
@@ -80,8 +53,41 @@ class TestSession_userName(TestCase):
             with c.session_transaction() as sess:
                 sess['userName'] = True
             resp = c.get('/')
-        print(resp.data)
-        self.assertEqual(b'<!DOCTYPE html>\n<html>\n  <head>\n    <m[3569 chars]tml>', resp.data)
+            print(flask.session)
+            self.assertEqual(flask.session['score'],0)
+            self.assertEqual(flask.session['user'],'')
+            self.assertEqual(flask.session['userInput'],'')
+
+
+class TestSessions_run_game(TestCase):
+    def setUp(self):
+        self.app = app.test_client()
+
+    def test_with_session(self):
+        with self.app as c:
+            with c.session_transaction() as sess:
+                sess['userName'] = True
+            resp = c.get('/game')
+            print(flask.session)
+            self.assertEqual(flask.session['counter'],0)
+            self.assertIn('riddle', flask.session)
+            self.assertTrue(flask.session['userName'])
+            
+            
+class TestSessions_results(TestCase):
+    def setUp(self):
+        self.app = app.test_client()
+
+    def test_with_session(self):
+        with self.app as c:
+            with c.session_transaction() as sess:
+                sess['userName'] = True
+            resp = c.get('/results')
+            print(flask.session)
+            # self.assertEqual(flask.session['counter'],0)
+            # self.assertIn('riddle', flask.session)
+            # self.assertTrue(flask.session['userName'])
+
 
 
 
