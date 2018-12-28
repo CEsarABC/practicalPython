@@ -6,10 +6,14 @@
     <div class="row">
       <div class="col-md-8 boxBorder">
         <h1>Player: <span class='answer'>{{session['userName']}}</span></h1>
-        <h1>This is my results page</h1>
+        <h1>Your results. Good luck in your next game!</h1>
         <h3>Score: {{session['score']}}</h3>
         
-        <a href="{{ url_for('root') }}" class="btn btn-outline-primary" role="button" aria-pressed="true">New Game</a>
+        <form method='POST'>
+          <input type="hidden" name=""/>
+          <button type="submit" class="btn btn-primary">New Game</button>
+        </form>
+        
         
       </div>
 

@@ -152,23 +152,23 @@ def run_game():
 ''' Results seccion brings the riddles with actual answers, leaderboard and the start a new game.
 when the form is validated the fuction stores a session to keep users score and name '''
 
-@app.route('/results')
+@app.route('/results', methods=['GET','POST'])
 def game_results():
 
     ''' On request, make a new dictionary with the user and the Score
     append to the list for display in leaderboard, after redirect to
     main page to start another game'''
-
-    if 'userName' in session:
-        newDict ={
-        'name': session['userName'],
-        'score': session['score']
-        }
-        dictionaries.append(newDict)
-    
+    if request.method == "POST":
+        if 'userName' in session:
+            newDict ={
+            'name': session['userName'],
+            'score': session['score']
+            }
+            dictionaries.append(newDict)
+        return redirect(url_for('root'))
     
     return render_template('results.html', dictionaries = dictionaries, wrong_answers=wrong_answers)
-    
+
 
 ''' To run in cloud 9'''
 if __name__ == '__main__':
