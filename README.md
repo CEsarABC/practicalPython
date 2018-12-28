@@ -52,9 +52,8 @@ At the beginning of this project cloud9 presented challenges in the way it uses 
       - Wireframes
 
 
-  - run4.py **(main application)**
-  - app.py (copy of the main application for testing only)
-  - test_app.py (Unittest for app.py)
+  - app.py **(main application)**
+  - test_app.py **(Unittest for app.py)**
 
 ## UX
 - The application needed to be clean and simple for any user to understand the dynamic of the game. Three sections where created in order to create a path to follow.
@@ -72,25 +71,18 @@ At the beginning of this project cloud9 presented challenges in the way it uses 
 ### Left to Implement
 Bringing this project to life took me around a month and some ideas where left on the side just because of time
 - [ ] Wanted to bring riddles in random order
-- [ ] Writing all sessions to files
-- [ ] Creating a data base
 - [ ] giving the user option to choose number of riddles
-- [ ] use of JavaScript to make it more interactive
 
 ## Testing
 The testing part of the project is divided into two sections, the unittest and the manual testing.
 
-- Unittest was difficult to implement due to the relation between the material in the course and flask not existing (testing). Unittest was used to test sessions and page responses and not the logic.
-  - Files **test_app.py** and **app.py** in the root folder where created to use unittest by modifying the response data in the functions, to check for the existence of sessions in the document
-    - **app.py lines (65, 120, 149)**
-  - These two test files were left in the root folder of the project after creating path problems when being used inside the test folder
-  - to run test_app.py in root folder `$ python test_app.py`
-  - to run tests in dictionary `$ python test_dictionary.py`  and
-  `$ python testing_file_handles.py`
-
-
-- **Issue** line 27 of **test_app.py**, where the page results
-does not get the 200 status code. checked but could not find reason. the issue does not affect the application.
+- Unittest was difficult to implement due to the relation between the material in the course and flask not existing (testing). Unittest was used to test sessions and page responses.
+  - File **test_app.py** in the root folder where created to use unittest by modifying the response data in the functions, to check for the existence of sessions in the document.
+  - This test file was left in the root folder of the project after creating path problems when being used inside the test folder
+  - to run test_app.py in root folder with the virtual environment active `$ python test_app.py` (python 3.6 needed)
+  - to run the app normally outside the virtual environment `$ python3 test_app.py`
+  - to run tests in dictionary `$ python3 test_dictionary.py`  and
+  `$ python3 testing_file_handles.py`
 
 
 - Manual tests were employed in the **test** folder within the project and they are testing the logic in the python code
@@ -152,4 +144,3 @@ does not get the 200 status code. checked but could not find reason. the issue d
 ## Acknowledgments
 Thank you to the code institute for the support. This last project has been challenging and took me some time to develop. I have learned a lot and I hope to keep learning to become the professional I want to be.
 Thank you to the slack channels for the support and the code academy tutors which always had answers to help me move forward.
-Merry Christmas guys and girls
