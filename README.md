@@ -61,7 +61,8 @@ At the beginning of this project cloud9 presented challenges in the way it uses 
 - The application needed to be clean and simple for any user to understand the dynamic of the game. Three sections where created in order to create a path to follow.
 - Section one is the introduction where the user gets to understand how the game works. there is a set of rules as guide.
 - Section two contains the game where the user clearly sees a layout which is divided in sections and directs the attention to the riddle, invites the user to compete because there is a leaderboard in use where you can see the previous players score and name. The layout brings the riddles with wrong answers and gives a score if the guess is correct.
-- Section three shows the final score and the riddles with their answers for the player's amusement. There is an open invitation to try again but this time the riddles will be different, again for the amusement of the player. The leaderboard is kept for other players to see inviting competition
+- Section three shows the final score and the riddles with their answers for the player's amusement. There is an open invitation to try again but this time the riddles will be different, again for the amusement of the player. 
+- The leaderboard is kept for other players to see, inviting competition. Last 5 players in the session will be shown.
 - The design focuses the player with high contrast and expresses hierarchy, with the use of font sizes and expresses dynamics with the use of fonts. Looking  simple but visually appealing.
 
 ## Features

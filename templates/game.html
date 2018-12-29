@@ -30,7 +30,7 @@
   
     <aside class="col-md-4 boxBorder">
       <h3>Leaderboard</h3>
-      {% for entry in dictionaries %}
+      {% for entry in dictionaries[0:5] %}
       <ul>
         <li>
           <span class="answer">{{entry.get('name')}}</span> score <span class="answer">{{entry.get('score')}}</span>

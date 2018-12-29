@@ -116,7 +116,7 @@ def run_game():
                     wrong_answers.append(wrong_dict)
 
         session['counter'] = session.get('counter') + 1
-        print('this is riddle list ' + riddles_list[session.get('counter')][1])
+        #print('this is riddle list ' + riddles_list[session.get('counter')][1])
         return redirect(url_for('run_game'))
     else:
         if 'counter' not in session:
@@ -158,15 +158,20 @@ def game_results():
 
     ''' On request, make a new dictionary with the user and the Score
     append to the list for display in leaderboard, after redirect to
-    main page to start another game'''
+    main page to start another game. Leaderboard will show just the las 5 players
+    from the active session'''
+    
     if request.method == "POST":
         if 'userName' in session:
             newDict ={
             'name': session['userName'],
             'score': session['score']
             }
-            dictionaries.append(newDict)
+            dictionaries.insert(0, newDict)
         return redirect(url_for('root'))
+    
+    for entry in dictionaries[0:5]:
+        print(entry)
     
     return render_template('results.html', dictionaries = dictionaries, wrong_answers=wrong_answers)
 
