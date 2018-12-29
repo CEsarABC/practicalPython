@@ -1,19 +1,23 @@
+
 from app import app
 import unittest
 from unittest import TestCase
 import flask
 
-''' Testing pages response by code status
-and follow_redirects '''
 
-class TestRun(TestCase):
+
+class TestRun(unittest.TestCase):
+    
+    ''' Testing pages response by code status
+    and follow_redirects '''
+    
     def test_root(self):
         with app.test_client() as c:
             response = c.get('/', follow_redirects=True)
             self.assertEqual(response.status_code, 200)
             print('root: response, redirect')
 
-class TestGame(TestCase):
+
     def test_run_game(self):
         with app.test_client() as c:
             response = c.get('/game', follow_redirects=True)
@@ -21,7 +25,7 @@ class TestGame(TestCase):
             print('game: response, redirect')
 
 
-class TestResults(TestCase):
+
     def test_results(self):
         tester = app.test_client(self)
         response = tester.get('/results', content_type='html/text')
@@ -31,14 +35,13 @@ class TestResults(TestCase):
         print('results: response, assert in')
 
 
-''' Testing sessions active in each section '''
+    ''' Testing sessions active in each section '''
 
 
-class TestSessions_root(TestCase):
     def setUp(self):
         self.app = app.test_client()
 
-    def test_with_session(self):
+    def test_with_session_root(self):
         with self.app as c:
             resp = c.get('/')
             #print(flask.session)
@@ -48,11 +51,7 @@ class TestSessions_root(TestCase):
             print('root: session: score, user, userInput')
 
 
-class TestSessions_run_game(TestCase):
-    def setUp(self):
-        self.app = app.test_client()
-
-    def test_with_session(self):
+    def test_with_session_game(self):
         with self.app as c:
             resp = c.get('/game')
             #print(flask.session)
@@ -60,18 +59,13 @@ class TestSessions_run_game(TestCase):
             self.assertIn('riddle', flask.session)
             print("game: session['counter'], assertIn ridddle")
             
-            
-class TestSessions_results(TestCase):
-    def setUp(self):
-        self.app = app.test_client()
 
-    def test_with_session(self):
+    def test_with_session_results(self):
         with self.app as c:
             resp = c.get('/results')
             print(flask.session)
             self.assertEqual(flask.session,{})
             print("results pass")
-
 
 
 

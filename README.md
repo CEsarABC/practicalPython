@@ -37,6 +37,8 @@ Cesar's riddle game successfully guides the user through this simple application
  - Virtualenv (virtual environment)
  - Unittest
 - Flask
+- Cloud9
+- Adobe Illustrator
 - ATOM 1.32.2 (for offline coding)
 
 At the beginning of this project cloud9 presented challenges in the way it uses different versions of python, creating a virtual environment was a great move because the deployment to heroku was pretty easy.
@@ -48,12 +50,12 @@ At the beginning of this project cloud9 presented challenges in the way it uses 
       - data
       - static (css style sheet)
       - templates
-      - tests (different manual tests for sections of the application).
       - Wireframes
 
 
   - app.py **(main application)**
   - test_app.py **(Unittest for app.py)**
+  - testing_file_handles **(Unittest for app)**
 
 ## UX
 - The application needed to be clean and simple for any user to understand the dynamic of the game. Three sections where created in order to create a path to follow.
@@ -77,18 +79,13 @@ Bringing this project to life took me around a month and some ideas where left o
 The testing part of the project is divided into two sections, the unittest and the manual testing.
 
 - Unittest was difficult to implement due to the relation between the material in the course and flask not existing (testing). Unittest was used to test sessions and page responses.
-  - File **test_app.py** in the root folder where created to use unittest by modifying the response data in the functions, to check for the existence of sessions in the document.
-  - This test file was left in the root folder of the project after creating path problems when being used inside the test folder
+  - File **test_app.py** in the root folder where created to use unittest by testing the response data in the html code. Check for the existence of sessions in the document.
+  - This test file was left in the root folder of the project after creating path problems when being used inside a test folder
   - to run test_app.py in root folder with the virtual environment active `$ python test_app.py` (python 3.6 needed)
   - to run the app normally outside the virtual environment `$ python3 test_app.py`
-  - to run tests in dictionary `$ python3 test_dictionary.py`  and
-  `$ python3 testing_file_handles.py`
+  - to run testing_file_handles.py  `$ python3 testing_file_handles.py`
 
-
-- Manual tests were employed in the **test** folder within the project and they are testing the logic in the python code
-  - **testing_dictionary.py** was created to test the logic in inputs storage and the use of sessions to make new dictionaries
-  - **testing_file_handles.py** was created to test the use of file handles, reading from a file and creating lists and dictionaries with the test file. testing assertions with user input
-
+- manual tests were created countiniously and many versions of app.py where called run.py, run1.py etc. All these files just visible on github previous commits.
 
 - Other tests include the HTML test by running the application locally and checking for issues in the layouts of the different pages.
 
@@ -126,9 +123,9 @@ The testing part of the project is divided into two sections, the unittest and t
     - Werkzeug==0.14.1
 
 **Running locally - in the terminal**
-- To run this application outside the virtual environment `$ python3 run4.py`
+- To run this application outside the virtual environment `$ python3 app.py`
 - To activate the virtual environment `$ source env/bin/activate`
-- To run this application inside the virtual environment `$ python run4.py`
+- To run this application inside the virtual environment `$ python app.py`
 
 ## Credits
 
@@ -136,6 +133,7 @@ The testing part of the project is divided into two sections, the unittest and t
 - This module was complemented through a couple of courses from **Udemy**
   - Automated software testing with python
   - Python and Flask bootcamp
+- Victor Miclovich **(Mentor)**
 
 ## Media
 - Fonts taken from google fonts
@@ -144,3 +142,5 @@ The testing part of the project is divided into two sections, the unittest and t
 ## Acknowledgments
 Thank you to the code institute for the support. This last project has been challenging and took me some time to develop. I have learned a lot and I hope to keep learning to become the professional I want to be.
 Thank you to the slack channels for the support and the code academy tutors which always had answers to help me move forward.
+
+Merry Christmas and happy New Year friends.

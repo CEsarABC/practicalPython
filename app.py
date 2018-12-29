@@ -7,6 +7,7 @@ app.config['SECRET_KEY'] = 'mykey'
 
 ''' These lists are here to store information and make this
 information available to all functions'''
+
 user_answers = []
 riddles_dict = []
 riddles = []

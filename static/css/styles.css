@@ -1,7 +1,7 @@
 /* box-shadow: none|h-offset v-offset blur spread color |inset|initial|inherit; */
 
 #main_row{
-  margin-top: 25% !important;
+  margin-top: 25%;
 }
 
 .verticalAlign{
@@ -19,6 +19,10 @@ body{
   /* background-image: linear-gradient(-90deg,#F9DEB9, #F2C2B3); */
   color: orange;
   font-family: 'Nanum Gothic', sans-serif;
+}
+
+#userbox{
+  padding-top: 5%;
 }
 
 .topMargin{
@@ -82,11 +86,20 @@ span{
 /*==================================================
 =            Bootstrap 4 Media Queries             =
 ==================================================*/
-/* Large desktops and laptops */
-@media (min-width: 1200px) {
+/* Ultra Large desktops and laptops */
+@media (min-width: 1501px) {
 /* css specific properties col-lg-**/
   #main_row{
-  margin-top: 20% !important;
+  margin-top: 15%;
+  }
+}
+
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) and (max-width:1500px) {
+/* css specific properties col-lg-**/
+  #main_row{
+  margin-top: 15%;
   }
 }
 
@@ -94,7 +107,7 @@ span{
 @media (min-width: 992px) and (max-width: 1199px) {
 /* css specific properties col-md-**/
   #main_row{
-  margin-top: 20% !important;
+  margin-top: 15%;
   }
 }
 
@@ -102,7 +115,7 @@ span{
 @media (min-width: 768px) and (max-width: 991px) {
 /* css specific properties col-sm-**/
   #main_row{
-  margin-top: 10% !important;
+  margin-top: 15%;
   }
 
 }
@@ -135,7 +148,10 @@ span{
     font-size: smaller;
   }
   #main_row{
-  margin-top: 5% !important;
+  margin-top: 5%;
+  }
+  #maintitle{
+    text-align: left !important;
   }
 }
 
@@ -166,8 +182,10 @@ span{
     font-size: smaller;
   }
   #main_row{
-  margin-top: 5% !important;
+  margin-top: 5%;
   }
-   
+  #maintitle{
+    text-align: left !important;
+  }
 }
 /* css specific properties col-xs-* or none for default*/
