@@ -131,7 +131,7 @@ def run_game():
     in the txt file  '''
 
     if 'counter' in session:
-        
+
         if session.get('counter') == 3 :
             return redirect(url_for('game_results'))
         elif session.get('counter') == 7 :
@@ -146,7 +146,7 @@ def run_game():
 
 
     session['riddle']=riddles[session.get('counter')]
-        
+
 
     return render_template('game.html', dictionaries = dictionaries, wrong_answers=wrong_answers)
 
@@ -160,7 +160,7 @@ def game_results():
     append to the list for display in leaderboard, after redirect to
     main page to start another game. Leaderboard will show just the las 5 players
     from the active session'''
-    
+
     if request.method == "POST":
         if 'userName' in session:
             newDict ={
@@ -169,17 +169,17 @@ def game_results():
             }
             dictionaries.insert(0, newDict)
         return redirect(url_for('root'))
-    
+
     for entry in dictionaries[0:5]:
         print(entry)
-    
+
     return render_template('results.html', dictionaries = dictionaries, wrong_answers=wrong_answers)
 
 
-''' To run in cloud 9'''
-if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')),debug=True)
+# ''' To run in cloud 9'''
+# if __name__ == '__main__':
+#     app.run(host=os.environ.get('IP'), port=int(os.environ.get('PORT')),debug=True)
 
 ''' To run in Atom (offline)'''
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
