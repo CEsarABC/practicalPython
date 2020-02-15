@@ -87,7 +87,7 @@ def root():
         if 'counter' in session and session.get('counter') > 0:
             session['counter'] = session.get('counter') + 1
         session['userName'] = request.form['UsernameInput']
-        TextEdition()
+        # TextEdition()
         return redirect(url_for('run_game'))
 
     else:
