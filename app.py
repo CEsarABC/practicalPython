@@ -69,11 +69,15 @@ def root():
     ''' wrong_answers.clear() is not working in previous versions of phyton
     run with python 3.x'''
     wrong_answers.clear()
-
+    def TextEdition():
+        with open('texts.txt', 'a') as file:
+            file.write('\n')
+            file.write(request.form['UsernameInput'])
     if request.method == 'POST':
         if 'counter' in session and session.get('counter') > 0:
             session['counter'] = session.get('counter') + 1
         session['userName'] = request.form['UsernameInput']
+        TextEdition()
         return redirect(url_for('run_game'))
 
     else:
