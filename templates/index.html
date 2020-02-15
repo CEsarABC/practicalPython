@@ -3,15 +3,19 @@
 
 {% block content %}
 <header class="container" id='main_row'>
+  <div class="container">
+    <h1>Names in Texts.txt</h1>
+    <p>{{text}}</p>
+  </div>
   <article class="row" >
-  
+
     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-right" id='maintitle'>
       <div style="padding:2em">
         <h1 id='header_title'>WELCOME TO CESAR'S RIDDLE GAME</h1>
         <p>Test your ability to unmask deception and your general knowledge.</p>
       </div>
-  
-  
+
+
     </div>
     <aside class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 boxBorder" id='userbox'>
       <div>
@@ -45,7 +49,7 @@
         </div>
       </div>
       <br />
-  
+
       <p>Please insert your name to start the game</p>
       <!-- <label for="userForm"></label> -->
       <form method='POST'>

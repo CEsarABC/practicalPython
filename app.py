@@ -70,10 +70,24 @@ def root():
     run with python 3.x'''
     wrong_answers.clear()
 
+    if os.path.exists('./texts.txt'):
+        with open('texts.txt', 'r') as file:
+            text = file.read()
+        print(text)
+        print(type(text))
+        print('file is on')
+    else:
+        print('not recognised')
+
+    def TextEdition():
+        with open('texts.txt', 'a') as file:
+            file.write('\n')
+            file.write(request.form['UsernameInput'])
     if request.method == 'POST':
         if 'counter' in session and session.get('counter') > 0:
             session['counter'] = session.get('counter') + 1
         session['userName'] = request.form['UsernameInput']
+        TextEdition()
         return redirect(url_for('run_game'))
 
     else:
@@ -81,7 +95,7 @@ def root():
         session['score'] = 0
         session['userInput'] = ''
 
-    return render_template('index.html')
+    return render_template('index.html', text=text)
 
 
 ''' second definition accessing riddles and taking inputs '''
